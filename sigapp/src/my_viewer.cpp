@@ -26,6 +26,11 @@ float hhead;
 bool flatshading = false;
 bool norvec = false;
 int control = 1;
+//car manip
+SnManipulator* top = new SnManipulator;
+SnManipulator* bottom = new SnManipulator;
+
+//person manip
 SnManipulator* left_leg = new SnManipulator;
 SnManipulator* right_leg = new SnManipulator;
 SnManipulator* right_hand = new SnManipulator;
@@ -34,9 +39,20 @@ SnManipulator* h_head = new SnManipulator;
 SnManipulator* h_neck = new SnManipulator;
 SnManipulator* h_hips = new SnManipulator;
 SnManipulator* h_chest = new SnManipulator;
+SnManipulator* frontwheel1 = new SnManipulator;
+SnManipulator* frontwheel2 = new SnManipulator;
+SnManipulator* backwheel1 = new SnManipulator;
+SnManipulator* backwheel2 = new SnManipulator;
+
 SnManipulator* persontranslation = new SnManipulator;
 float yposition = 0.0f;
 float xposition = 0.0f;
+
+static float radius = 0.12f;
+static float R = 0.3f;
+static float height = 0.3f;
+static float width = 0.3f;
+static int n = 30;
 
 
 MyViewer::MyViewer ( int x, int y, int w, int h, const char* l ) : WsViewer(x,y,w,h,l)
@@ -91,223 +107,7 @@ void MyViewer::build_scene ()
 {
 	SnPrimitive* p;
 	GsModel* mymodel = new GsModel;
-	//bool smooth = true;
-	if (redraw1) {
-		rootg()->remove(0);
-		rootg()->remove(1);
-	}
-	//bool flat = true;
-	double x1, y1, z1;
-	double x2, y2, z2;
-	double x3, y3, z3;
-	double x4, y4, z4;
-	double a1, b1;
-	double a2, b2;
-	double a3, b3;
-	double a4, b4;
-
-
-	int n = 0;
-	SnLines* Line = new SnLines;
-	Line->init();
-	GsPnt A;
-	GsPnt B;
-	GsPnt C;
-	GsPnt D;
-	GsPnt E;
-	GsPnt F;
-	GsPnt G;
-	GsPnt H;
-	GsPnt normal_A;
-	GsPnt normal_B;
-	GsPnt normal_C;
-	GsPnt normal_D;
-	GsVec i;
-	GsVec j;
-	GsVec k;
-
-
-	float firstpoint;
-	float secondpoint;
-	float thirdpoint;
-	float firstpoint2;
-	float secondpoint2;
-	float thirdpoint2;
-
-	double theta = 0;
-	double Phi = 0;
-	double delta = GS_2PI / (double)resolution;
-
-
-
-	GsArray<GsVec> P(0, (int)(resolution * resolution * 4)); // will hold the points forming my triangles (size 0, but pre-allocate 6 spaces)
-
-	//calculate x y and z inside your double forloop
-	GsVec point1;
-	GsVec point2;
-	GsVec point3;
-	GsVec point4;
-	GsVec point5;
-	GsVec point6;
-	GsVec point7;
-	GsVec point8;
-
-
-	for (double Theta = 0; Theta < GS_2PI; Theta += delta) {//psuedo code given by TA
-
-		for (double Phi = 0; Phi < GS_2PI; Phi += delta) {
-
-			//this is for A
-			x1 = (bigradius + rad * cos((double)Theta)) * cos((double)Phi);
-			y1 = (bigradius + rad * cos((double)Theta)) * sin((double)Phi);
-			z1 = rad * sin((double)Theta);
-
-			//GsVec p1 = p1.set(x1, y1, z1);
-			point1.set(x1, y1, z1);
-
-			//this is for B
-			x2 = (bigradius + rad * cos((double)Theta + delta)) * cos((double)Phi);
-			y2 = (bigradius + rad * cos((double)Theta + delta)) * sin((double)Phi);
-			z2 = rad * sin((double)Theta + delta);
-
-
-			//GsVec p2 = p2.set(x2, y2, z2);
-			point2.set(x2, y2, z2);
-
-			//This is for C
-
-			x3 = (bigradius + rad * cos((double)Theta + delta)) * cos((double)Phi + delta);
-			y3 = (bigradius + rad * cos((double)Theta + delta)) * sin((double)Phi + delta);
-			z3 = rad * sin((double)Theta + delta);
-
-
-			//GsVec p3 = p3.set(x3, y3, z3);
-			point3.set(x3, y3, z3);
-
-
-			//this is for D
-
-			x4 = (bigradius + rad * cos((double)Theta)) * cos((double)Phi + delta);
-			y4 = (bigradius + rad * cos((double)Theta)) * sin((double)Phi + delta);
-			z4 = rad * sin((double)Theta);
-
-
-			//GsVec p4 = p4.set(x4, y4, z4);
-			point4.set(x4, y4, z4);
-
-			//making our vector parameters of the triangle into a POINT
-			A = GsVec(x1, y1, z1);
-			B = GsVec(x2, y2, z2);
-			C = GsVec(x3, y3, z3);
-			D = GsVec(x4, y4, z4);
-
-			//pushing the points into mymodel
-			mymodel->V.push(D);
-			mymodel->V.push(C);
-			mymodel->V.push(B);
-			//pushing them in the order we want it to show up counterclock wise
-			mymodel->V.push(D);
-			mymodel->V.push(B);
-			mymodel->V.push(A);
-
-
-			//making new points
-			a1 = (Theta / GS_2PI);
-			b1 = (Phi / GS_2PI);
-
-			a2 = ((Theta + delta) / GS_2PI);
-			b2 = (Phi / GS_2PI);
-
-
-			a3 = ((Theta + delta) / GS_2PI);
-			b3 = ((Phi + delta) / GS_2PI);
-
-			a4 = (Theta / GS_2PI);
-			b4 = ((Phi + delta) / GS_2PI);
-
-			E = GsPnt2(a1, b1);
-			F = GsPnt2(a2, b2);
-			G = GsPnt2(a3, b3);
-			H = GsPnt2(a4, b4);
-
-			//pushing points into the Texture
-			mymodel->T.push() = H;
-			mymodel->T.push() = G;
-			mymodel->T.push() = F;
-
-			mymodel->T.push() = H;
-			mymodel->T.push() = F;
-			mymodel->T.push() = E;
-
-
-			/*! The triangular face keeps 3 indices to the associated vertex information */
-			mymodel->F.push() = GsModel::Face(n, n + 1, n + 2);//add n vertices...
-			mymodel->F.push() = GsModel::Face(n + 3, n + 4, n + 5);
-			//making three indices for the three vector points in triangle
-			//pushing those three indicies into model
-			n = n + 6;
-
-			//get the center point of the big phi
-
-			firstpoint = (float)cos(Phi) * bigradius;
-			secondpoint = (float)sin(Phi) * bigradius;
-			thirdpoint = 0;
-			//
-			firstpoint2 = (float)cos(Phi + delta) * bigradius;
-			secondpoint2 = (float)sin(Phi + delta) * bigradius;
-			thirdpoint2 = 0;
-
-
-			Line->color(GsColor::green);
-			//calling smooth shading
-			if (flatshading) {
-				//mymodel->set_mode(GsModel::Smooth, GsModel::NoMtl);
-
-				////flat normal
-				GsPnt flat_center = (A + B + C) / 3.0f;
-				GsPnt flat2 = cross(A - C, A - B);
-
-				Line->push(flat_center, flat_center + normalize(flat2));
-
-			}
-			else//smooth
-			{
-				//need to do two center points because we need to get cener points for both traingles
-				GsVec center_point = GsVec(firstpoint, secondpoint, thirdpoint);
-				GsVec center_point2 = GsVec(firstpoint2, secondpoint2, thirdpoint2);
-
-				normal_A = A - center_point;
-				normal_B = B - center_point;
-				normal_C = C - center_point2;
-				normal_D = D - center_point2;
-
-
-				mymodel->N.push(normal_D);
-				mymodel->N.push(normal_C);
-				mymodel->N.push(normal_B);
-
-				mymodel->N.push(normal_D);
-				mymodel->N.push(normal_B);
-				mymodel->N.push(normal_A);
-
-				Line->push(D, D + normalize(normal_D));
-				Line->push(C, C + normalize(normal_C));
-				Line->push(B, B + normalize(normal_B));
-
-				Line->push(D, D + normalize(normal_D));
-				Line->push(B, B + normalize(normal_B));
-				Line->push(A, A + normalize(normal_A));
-
-
-				mymodel->set_mode(GsModel::Smooth, GsModel::NoMtl);
-
-
-
-			}
-
-
-		}
-	}
+	
 	SnGroup* person = new SnGroup;//pointer person to SnGroup
 	//person->separator(true);
 	//his head
@@ -365,7 +165,6 @@ void MyViewer::build_scene ()
 	h_hips->child(_hhips);
 	_hchest->add(h_hips);
 	h_hips->initial_mat(t);
-	//rootg()->add(h_hips);
 
 
 	//left leg
@@ -379,7 +178,6 @@ void MyViewer::build_scene ()
 	left_leg->child(_leftleg); 
 	_hhips->add(left_leg);
 	left_leg->initial_mat(t);
-	//rootg()->add(left_leg);
 
 
 	//right leg
@@ -388,14 +186,10 @@ void MyViewer::build_scene ()
 	t.setrans(0.5f, -1.0f, 0.0f);
 
 	SnGroup* _rightleg = new SnGroup;
-	//_rightleg->separator(true);
 	_rightleg->add(rightleg);
 	right_leg->child(_rightleg);
 	_hhips->add(right_leg);
 	right_leg->initial_mat(t);
-	//rootg()->add(right_leg);
-
-
 
 	//left hand
 	SnPrimitive* lefthand= new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.2f, 1.2f);
@@ -424,98 +218,205 @@ void MyViewer::build_scene ()
 	//rootg()->add(right_hand);
 
 
-
-	//tree give it texture later
-	p = new SnPrimitive(GsPrimitive::Ellipsoid, 3.0f, 1.0f);
-	p->prim().material.diffuse = GsColor::green;
-	add_model(p, GsVec(10.0f, 6.0f, -15.0f));
-
-	//tree bottom
-	p = new SnPrimitive(GsPrimitive::Capsule, 0.5f, 0.4f, 2.5f);
-	p->prim().material.diffuse = GsColor::brown;
-	add_model(p, GsVec(10.0f, 1.0f, -15.0f));
-
-	//tree top
-	p = new SnPrimitive(GsPrimitive::Ellipsoid, 3.0f, 1.0f);
-	p->prim().material.diffuse = GsColor::green;
-	add_model(p, GsVec(-10.0f, 6.0f, -15.0f));
-
-	//tree bottom
-	p = new SnPrimitive(GsPrimitive::Capsule, 0.5f, 0.4f, 2.5f);
-	p->prim().material.diffuse = GsColor::brown;
-	add_model(p, GsVec(-10.0f, 1.0f, -15.0f));
-
 	//floor
 	p = new SnPrimitive(GsPrimitive::Box, 15.0f, 0.3f, 18.0f);
 	p->prim().material.diffuse = GsColor::lightgray;
 	add_model(p, GsVec(0.0f, -2.5f, 1.0f));
 
-	////buildings
-	//p = new SnPrimitive(GsPrimitive::Box, 1.0f, 6.0f, 3.0);
-	//p->prim().material.diffuse = GsColor::lightblue;
-	//add_model(p, GsVec(-7.0f, 2.0f, 0));
 
-	//back of basketball court
-	p = new SnPrimitive(GsPrimitive::Box, 1.0f, 4.0f, 0.2f);
-	p->prim().material.diffuse = GsColor::black;
-	add_model(p, GsVec(0, 2.0f, -15.0f));
+	SnGroup* pos_sng = new SnGroup;
 
-	//top of basketball court
-	p = new SnPrimitive(GsPrimitive::Box, 3.0f, 3.0f, 0.5f);
-	p->prim().material.diffuse = GsColor::white;
-	add_model(p, GsVec(0, 8.0f, -15.0f));
+	//top part of car
+	SnPrimitive* tcar_sn = new SnPrimitive(GsPrimitive::Box, 1.2f, 0.7f, 1.49f);
+	tcar_sn->prim().material.diffuse = GsColor::magenta;
+	transm.setrans(-0.1f, 1.0f, 0);
 
-	//2nd basketball court 
-	p = new SnPrimitive(GsPrimitive::Box, 1.0f, 4.0f, 0.2f);
-	p->prim().material.diffuse = GsColor::black;
-	add_model(p, GsVec(0, 2.0f, 18.0f));
+	SnGroup* topgroup = new SnGroup;
+	topgroup->add(tcar_sn);
+	top->child(topgroup);
+	pos_sng->add(top);
+	top->initial_mat(transm);
+	rootg()->add(top);
 
+	//body of car
+	SnPrimitive* bcar_sn = new SnPrimitive(GsPrimitive::Box, 2.0f, 0.5f, 1.5f);
+	bcar_sn->prim().material.diffuse = GsColor::blue;
+	transm.setrans(0.0f, -1.0f, 0.0f);
 
-	//top of basketball court
-	p = new SnPrimitive(GsPrimitive::Box, 3.0f, 3.0f, 0.5f);
-	p->prim().material.diffuse = GsColor::white;
-	add_model(p, GsVec(0, 8.0f, 18.0f));
-
-	//basket
-	p = new SnPrimitive(GsPrimitive::Cylinder, 2.0f, 2.0f, 0.2f);
-	p->prim().material.diffuse = GsColor::red;
-	add_model(p, GsVec(0.0f, 8.0f, 15.5f));
-
-	p = new SnPrimitive(GsPrimitive::Cylinder, 2.0f, 2.0f, 0.2f);
-	p->prim().material.diffuse = GsColor::red;
-	add_model(p, GsVec(0.0f, 8.0f, -12.5f));
-
-	SnModel* myscene = new SnModel(mymodel);
-	SnModel* sn = new SnModel;
-
-	GsModel& m = *myscene->model();
+	SnGroup* bottomsng = new SnGroup;
+	bottomsng->add(bcar_sn);
+	bottom->child(bottomsng);
+	topgroup->add(bottom);
+	bottom->initial_mat(transm);
 
 
-	//Create a "material group"
-	GsModel::Group& g = *m.G.push();
-	g.fi = 0;
-	g.fn = m.F.size();
-	g.dmap = new GsModel::Texture;
-	//if (control == 1)
-		g.dmap->fname.set("../src/basketball.JPG");
+	//front wheel 
+	mymodel = new GsModel;
+	double centerp = 0;
+	double centert = 0;
+	double phi = 0;
+	double theta = 0;
+	double delta = 0;
+	double x, y, z = 0;
+	double x_2, y_2, z_2 = 0.0;
+	double x_3, y_3, z_3 = 0.0;
+	double x_4, y_4, z_4 = 0.0;
 
-	//if (control == 2)
-		//g.dmap->fname.set("../src/lion.JPG");
+	SnLines* line = new SnLines;
+	line->init();
+	GsModel& torus = *mymodel;
 
-	//Make the number of materials matches the number of groups
-	//if (control == 3)
-		//g.dmap->fname.set("../src/goat.JPG");
+	SnModel* frontwheel1_sn = new SnModel(&torus);
 
-	m.M.push().init();
+	line->color(GsColor::red);
+	//display faces
 
-	m.set_mode(GsModel::Smooth, GsModel::PerGroupMtl);
-	m.textured = true;
+	int i0 = 0;		//face index
+	line->init();
+	int faceIndex = 0;
+	int vIndex = 0;
+	for (int i = 0; i <= n; i++) {
+		phi += (GS_2PI / n);
+		for (int j = 0; j <= n; j++) {
+			theta += (GS_2PI / n);
+			delta = (GS_2PI / n);
 
-	rootg()->add(myscene);
-	//rootg()->add(Line);
-	if (norvec) {
-		rootg()->add(Line);
+			//first point (theta, phi) 0 
+			x = (R + radius * cos(theta)) * cos(phi);
+			y = ((R + radius * cos(theta)) * sin(phi));
+			z = (radius * sin(theta));
+			//GS_2PI;
+
+			//second point (theta + delta_theta, phi) 1 
+			x_2 = (R + radius * cos(theta + delta)) * cos(phi);
+			y_2 = ((R + radius * cos(theta + delta)) * sin(phi));
+			z_2 = (radius * sin(theta + delta));
+
+			//third point (theta + delta_theta, phi+delta_phi) 2
+			x_3 = (R + radius * cos(theta + delta)) * cos(phi + delta);
+			y_3 = ((R + radius * cos(theta + delta)) * sin(phi + delta));
+			z_3 = (radius * sin(theta + delta));
+
+			//fourth point (theta, phi+delta_phi) 3
+			x_4 = (R + radius * cos(theta)) * cos(phi + delta);
+			y_4 = ((R + radius * cos(theta)) * sin(phi + delta));
+			z_4 = (radius * sin(theta));
+
+			a = GsVec(x, y, z);
+			b = GsVec(x_2, y_2, z_2);
+			c = GsVec(x_3, y_3, z_3);
+			d = GsVec(x_4, y_4, z_4);
+
+			mymodel->V.push(d);			//0
+			mymodel->V.push(c);			//1
+			mymodel->V.push(b);			//2
+			mymodel->V.push(d);
+			mymodel->V.push(b);
+			mymodel->V.push(a);			//3
+
+			mymodel->F.push() = GsModel::Face(i0, i0 + 1, i0 + 2);			//d,c,b
+			mymodel->F.push() = GsModel::Face(i0 + 3, i0 + 4, i0 + 5);			//d,b,a
+			i0 += 6;
+
+			float one = float(R * cos(phi)), two = float(R * sin(phi)), three = 0;
+			float two_1 = float(R * cos(phi + delta)), two_2 = float(R * sin((phi + delta))), two_3 = 0;
+			GsPnt centersmooth1 = GsVec(one, two, three);
+			GsPnt centersmooth2 = GsVec(two_1, two_2, two_3);
+
+			GsPnt n_a = a - centersmooth1;
+			GsPnt n_b = b - centersmooth1;
+			GsPnt n_c = c - centersmooth2;
+			GsPnt n_d = d - centersmooth2;
+
+			torus.N.push(n_d);
+			torus.N.push(n_c);
+			torus.N.push(n_b);
+
+			torus.N.push(n_d);
+			torus.N.push(n_b);
+			torus.N.push(n_a);
+
+			GsPnt n_smooth1 = cross(a - b, c - d);
+			GsPnt n_smooth2 = cross(a - c, c - b);
+
+		}
 	}
+
+	GsModel::Group& g = *torus.G.push();
+	//fi is the intial face 
+	//fn is the number of faces
+	g.fi = 0;
+	g.fn = torus.F.size();
+	g.dmap = new GsModel::Texture;
+
+	//g.dmap->fname.set("grass_texture.jpg");
+	torus.M.push().init();					//M - list of materials 
+	torus.M.top() = GsMaterial::DefaultSpecular;
+	int nv = torus.V.size();				// V - list of vertex coordinates 
+	torus.T.size(nv);						//T - list of texture coordinates
+
+	phi = 0.0;
+	theta = 0.0;
+	int l = 0;
+
+	for (int i = 0; i <= n; i++) {
+		phi += (GS_2PI / n);
+		double delta_phi = (GS_2PI / n);
+		for (int j = 0; j <= n; j++) {
+			double delta_theta = (GS_2PI / n);
+			theta += (GS_2PI / n);
+			torus.T[l].set((theta / GS_2PI), (phi + delta_phi) / GS_2PI);						//d
+			torus.T[l + 1].set((theta + delta_theta) / GS_2PI, (phi + delta_phi) / GS_2PI);	//c
+			torus.T[l + 2].set((theta + delta_theta) / GS_2PI, phi / GS_2PI);				//b
+			torus.T[l + 3].set(theta / GS_2PI, (phi + delta_phi) / GS_2PI);					//d
+			torus.T[l + 4].set((theta + delta_theta) / GS_2PI, phi / GS_2PI);				//b
+			torus.T[l + 5].set(theta / GS_2PI, phi / GS_2PI);								//a
+			l += 6;
+
+		}
+	}
+	torus.textured = false;
+	torus.set_mode(GsModel::Smooth, GsModel::PerGroupMtl);
+	//rootg()->add(myscene);
+
+	transm.setrans(1.4f, -0.4f, 1.5f);
+	SnGroup* fwheelgroup = new SnGroup;
+	fwheelgroup->add(frontwheel1_sn);
+	frontwheel1->child(fwheelgroup);
+	bottomsng->add(frontwheel1);
+	frontwheel1->initial_mat(transm);
+
+	GsModel& torus2 = *mymodel;
+	SnModel* frontwheel2_sn = new SnModel(&torus2);
+	transm.setrans(1.4f, -0.4f, -1.5f);
+
+	SnGroup* fwheelgroup2 = new SnGroup;
+	fwheelgroup2->add(frontwheel2_sn);
+	frontwheel2->child(fwheelgroup2);
+	bottomsng->add(frontwheel2);
+	frontwheel2->initial_mat(transm);
+
+	//back wheels 
+	GsModel& torus3 = *mymodel;
+	SnModel* backwheel1_sn = new SnModel(&torus3);
+	transm.setrans(-1.4f, -0.4f, 1.5f);
+
+	SnGroup* backwheelgroup1 = new SnGroup;
+	backwheelgroup1->add(backwheel1_sn);
+	backwheel1->child(backwheelgroup1);
+	bottomsng->add(backwheel1);
+	backwheel1->initial_mat(transm);
+
+	GsModel& torus4 = *mymodel;
+	SnModel* backwheel2_sn = new SnModel(&torus4);
+	transm.setrans(-1.4f, -0.4f, -1.5f);
+
+	SnGroup* backwheelgroup2 = new SnGroup;
+	backwheelgroup2->add(backwheel2_sn);
+	backwheel2->child(backwheelgroup2);
+	bottomsng->add(backwheel2);
+	backwheel2->initial_mat(transm);
+
 }
 void MyViewer::show_normals(bool view)
 {

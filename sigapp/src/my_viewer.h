@@ -18,6 +18,8 @@ class MyViewer : public WsViewer
 	int control;
 	SnModel* _torus;
 	bool _animating;
+	GsMat transm;
+	GsPnt a, b, c, d;
 	
    public :
 	MyViewer ( int x, int y, int w, int h, const char* l );
@@ -25,12 +27,6 @@ class MyViewer : public WsViewer
 	void add_model ( SnShape* s, GsVec p );
 	void build_scene ();
 	void setrans();
-	//GsCamera& camera(bool);
-	//void camera();
-	//void camerapersp(bool); 
-	//GsCamera& camera();
-	//void make_torus();
-	//void texturize(GsModel* m);
 	void show_normals ( bool view );
 	void run_animation ();
 	virtual int handle_keyboard ( const GsEvent &e ) override;
