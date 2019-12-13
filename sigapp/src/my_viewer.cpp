@@ -22,9 +22,6 @@ float hhead;
 bool flatshading = false;
 bool norvec = false;
 int control = 1;
-//car manip
-SnManipulator* top = new SnManipulator;
-SnManipulator* bottom = new SnManipulator;
 
 //person manip
 SnManipulator* left_leg = new SnManipulator;
@@ -35,10 +32,16 @@ SnManipulator* h_head = new SnManipulator;
 SnManipulator* h_neck = new SnManipulator;
 SnManipulator* h_hips = new SnManipulator;
 SnManipulator* h_chest = new SnManipulator;
+
+//car manip
+SnManipulator* top = new SnManipulator;
+SnManipulator* bottom = new SnManipulator;
 SnManipulator* frontwheel1 = new SnManipulator;
 SnManipulator* frontwheel2 = new SnManipulator;
 SnManipulator* backwheel1 = new SnManipulator;
 SnManipulator* backwheel2 = new SnManipulator;
+
+
 
 SnManipulator* persontranslation = new SnManipulator;
 float yposition = 0.0f;
@@ -109,7 +112,7 @@ void MyViewer::build_scene ()
 	//his head
 	SnPrimitive* hhead = new SnPrimitive(GsPrimitive::Sphere, 1.3f);
 	hhead->prim().material.diffuse = GsColor::lightgray;
-	t.setrans(0, 5, 6);
+	t.setrans(0, 6.4f, 65);
 	
 	SnGroup* _hhead = new SnGroup;
 	//_hhead->seperator(true);
@@ -131,9 +134,6 @@ void MyViewer::build_scene ()
 	h_neck->child(_hneck);
 	_hhead->add(h_neck);
 	h_neck->initial_mat(t);
-	//rootg()->add(h_neck);
-
-
 
 	//chest
 	SnPrimitive* hchest= new SnPrimitive(GsPrimitive::Box, 1.0f, 1.0f, 0.5);
@@ -146,8 +146,6 @@ void MyViewer::build_scene ()
 	h_chest->child(_hchest);
 	_hneck->add(h_chest);
 	h_chest->initial_mat(t);
-	//rootg()->add(h_chest);
-
 
 	//hips
 	SnPrimitive* hhips = new SnPrimitive(GsPrimitive::Box, 0.7f, 0.7f, 0.5f);
@@ -215,17 +213,52 @@ void MyViewer::build_scene ()
 
 
 	//floor
-	p = new SnPrimitive(GsPrimitive::Box, 81.0f, 0.01f, 81.0f);
+	p = new SnPrimitive(GsPrimitive::Box, 70.0f, 0.01f, 70.0f);
 	p->prim().material.diffuse = GsColor::lightgray;
 	add_model(p, GsVec(0.0f, -0.3f, 1.0f));
 
+	buildcar();
+	
+}
+void MyViewer::show_normals(bool view)
+{
+	// Note that primitives are only converted to meshes in GsModel
+	// at the first draw call.
+	GsArray<GsVec> fn;
+	SnGroup* r = (SnGroup*)root();
+	for (int k = 0; k < r->size(); k++)
+	{
+		SnManipulator* manip = r->get<SnManipulator>(k);
+		SnShape* s = manip->child<SnGroup>()->get<SnShape>(0);
+		SnLines* l = manip->child<SnGroup>()->get<SnLines>(1);
+		if (!view) { l->visible(false); continue; }
+		l->visible(true);
+		if (!l->empty()) continue; // build only once
+		l->init();
+		if (s->instance_name() == SnPrimitive::class_name)
+		{
+			GsModel& m = *((SnModel*)s)->model();
+			m.get_normals_per_face(fn);
+			const GsVec* n = fn.pt();
+			float f = 0.33f;
+			for (int i = 0; i < m.F.size(); i++)
+			{
+				const GsVec& a = m.V[m.F[i].a]; l->push(a, a + (*n++) * f);
+				const GsVec& b = m.V[m.F[i].b]; l->push(b, b + (*n++) * f);
+				const GsVec& c = m.V[m.F[i].c]; l->push(c, c + (*n++) * f);
+			}
+		}
+	}
+}
 
+void MyViewer::buildcar(){
+	GsModel* mymodel = new GsModel;
 	SnGroup* pos_sng = new SnGroup;
 
 	//top part of car
 	SnPrimitive* tcar_sn = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(-0.1f, 4.5f, 0);
+	transm.setrans(-0.1f, 4.5f, 55.0f);
 
 	SnGroup* topgroup = new SnGroup;
 	topgroup->add(tcar_sn);
@@ -245,7 +278,7 @@ void MyViewer::build_scene ()
 	topgroup->add(bottom);
 	bottom->initial_mat(transm);
 
-//torus creation 
+	//torus creation 
 	mymodel = new GsModel;
 	double centerp = 0;
 	double centert = 0;
@@ -413,36 +446,7 @@ void MyViewer::build_scene ()
 	bottomsng->add(backwheel2);
 	backwheel2->initial_mat(transm);
 
-}
-void MyViewer::show_normals(bool view)
-{
-	// Note that primitives are only converted to meshes in GsModel
-	// at the first draw call.
-	GsArray<GsVec> fn;
-	SnGroup* r = (SnGroup*)root();
-	for (int k = 0; k < r->size(); k++)
-	{
-		SnManipulator* manip = r->get<SnManipulator>(k);
-		SnShape* s = manip->child<SnGroup>()->get<SnShape>(0);
-		SnLines* l = manip->child<SnGroup>()->get<SnLines>(1);
-		if (!view) { l->visible(false); continue; }
-		l->visible(true);
-		if (!l->empty()) continue; // build only once
-		l->init();
-		if (s->instance_name() == SnPrimitive::class_name)
-		{
-			GsModel& m = *((SnModel*)s)->model();
-			m.get_normals_per_face(fn);
-			const GsVec* n = fn.pt();
-			float f = 0.33f;
-			for (int i = 0; i < m.F.size(); i++)
-			{
-				const GsVec& a = m.V[m.F[i].a]; l->push(a, a + (*n++) * f);
-				const GsVec& b = m.V[m.F[i].b]; l->push(b, b + (*n++) * f);
-				const GsVec& c = m.V[m.F[i].c]; l->push(c, c + (*n++) * f);
-			}
-		}
-	}
+	
 }
 
 
