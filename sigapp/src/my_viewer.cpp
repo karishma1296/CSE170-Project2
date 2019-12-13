@@ -1,8 +1,4 @@
-//comment
-//hello
-//cool
 
-//test
 # include "my_viewer.h"
 
 # include <sigogl/ui_button.h>
@@ -48,8 +44,8 @@ SnManipulator* persontranslation = new SnManipulator;
 float yposition = 0.0f;
 float xposition = 0.0f;
 
-static float radius = 0.12f;
-static float R = 0.3f;
+static float radius = 0.5f;
+static float R = 1.0f;
 static float height = 0.3f;
 static float width = 0.3f;
 static int n = 30;
@@ -219,17 +215,17 @@ void MyViewer::build_scene ()
 
 
 	//floor
-	p = new SnPrimitive(GsPrimitive::Box, 15.0f, 0.3f, 18.0f);
+	p = new SnPrimitive(GsPrimitive::Box, 81.0f, 0.01f, 81.0f);
 	p->prim().material.diffuse = GsColor::lightgray;
-	add_model(p, GsVec(0.0f, -2.5f, 1.0f));
+	add_model(p, GsVec(0.0f, -0.3f, 1.0f));
 
 
 	SnGroup* pos_sng = new SnGroup;
 
 	//top part of car
-	SnPrimitive* tcar_sn = new SnPrimitive(GsPrimitive::Box, 1.2f, 0.7f, 1.49f);
+	SnPrimitive* tcar_sn = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(-0.1f, 1.0f, 0);
+	transm.setrans(-0.1f, 4.5f, 0);
 
 	SnGroup* topgroup = new SnGroup;
 	topgroup->add(tcar_sn);
@@ -239,9 +235,9 @@ void MyViewer::build_scene ()
 	rootg()->add(top);
 
 	//body of car
-	SnPrimitive* bcar_sn = new SnPrimitive(GsPrimitive::Box, 2.0f, 0.5f, 1.5f);
+	SnPrimitive* bcar_sn = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
 	bcar_sn->prim().material.diffuse = GsColor::blue;
-	transm.setrans(0.0f, -1.0f, 0.0f);
+	transm.setrans(0.0f, -2.0f, 0.0f);
 
 	SnGroup* bottomsng = new SnGroup;
 	bottomsng->add(bcar_sn);
@@ -249,8 +245,7 @@ void MyViewer::build_scene ()
 	topgroup->add(bottom);
 	bottom->initial_mat(transm);
 
-
-	//front wheel 
+//torus creation 
 	mymodel = new GsModel;
 	double centerp = 0;
 	double centert = 0;
@@ -379,16 +374,17 @@ void MyViewer::build_scene ()
 	torus.set_mode(GsModel::Smooth, GsModel::PerGroupMtl);
 	//rootg()->add(myscene);
 
-	transm.setrans(1.4f, -0.4f, 1.5f);
+	transm.setrans(5.0f, -1.0f, 4.5f);
 	SnGroup* fwheelgroup = new SnGroup;
 	fwheelgroup->add(frontwheel1_sn);
 	frontwheel1->child(fwheelgroup);
 	bottomsng->add(frontwheel1);
 	frontwheel1->initial_mat(transm);
 
+	//front wheels 
 	GsModel& torus2 = *mymodel;
 	SnModel* frontwheel2_sn = new SnModel(&torus2);
-	transm.setrans(1.4f, -0.4f, -1.5f);
+	transm.setrans(5.0f, -1.0f, -4.5f);
 
 	SnGroup* fwheelgroup2 = new SnGroup;
 	fwheelgroup2->add(frontwheel2_sn);
@@ -399,7 +395,7 @@ void MyViewer::build_scene ()
 	//back wheels 
 	GsModel& torus3 = *mymodel;
 	SnModel* backwheel1_sn = new SnModel(&torus3);
-	transm.setrans(-1.4f, -0.4f, 1.5f);
+	transm.setrans(-5.0f, -1.0f, 4.5f);
 
 	SnGroup* backwheelgroup1 = new SnGroup;
 	backwheelgroup1->add(backwheel1_sn);
@@ -409,7 +405,7 @@ void MyViewer::build_scene ()
 
 	GsModel& torus4 = *mymodel;
 	SnModel* backwheel2_sn = new SnModel(&torus4);
-	transm.setrans(-1.4f, -0.4f, -1.5f);
+	transm.setrans(-5.0f, -1.0f, -4.5f);
 
 	SnGroup* backwheelgroup2 = new SnGroup;
 	backwheelgroup2->add(backwheel2_sn);
