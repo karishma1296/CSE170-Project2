@@ -18,7 +18,8 @@ class MyViewer : public WsViewer
 	int control;
 	SnModel* _torus;
 	bool _animating;
-	GsMat transm;
+	//transm controls postition of row1 etc
+	GsMat transm, transm2, transm3, transm4;
 	GsPnt a, b, c, d;
 	
    public :
@@ -28,7 +29,13 @@ class MyViewer : public WsViewer
 	void build_scene ();
 	void show_normals ( bool view );
 	void run_animation ();
-	void buildcar();
+	void buildfirstrow();
+	void buildsecondrow();
+	void buildthirdrow();
+	void buildfourthrow();
+	void buildfifthrow();
+	void buildsixthrow();
+
 	virtual int handle_keyboard ( const GsEvent &e ) override;
 	virtual int uievent ( int e ) override;
 };
