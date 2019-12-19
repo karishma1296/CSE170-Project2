@@ -58,13 +58,6 @@ SnManipulator* frontrwheel1_3 = new SnManipulator;
 SnManipulator* backlwheel1_3 = new SnManipulator;
 SnManipulator* backrwheel1_3 = new SnManipulator;
 
-SnManipulator* top1_4 = new SnManipulator;
-SnManipulator* bottom1_4 = new SnManipulator;
-SnManipulator* frontlwheel1_4 = new SnManipulator;
-SnManipulator* frontrwheel1_4 = new SnManipulator;
-SnManipulator* backlwheel1_4 = new SnManipulator;
-SnManipulator* backrwheel1_4 = new SnManipulator;
-
 //second row 
 SnManipulator* top2_1 = new SnManipulator;
 SnManipulator* bottom2_1 = new SnManipulator;
@@ -79,21 +72,6 @@ SnManipulator* frontlwheel2_2 = new SnManipulator;
 SnManipulator* frontrwheel2_2 = new SnManipulator;
 SnManipulator* backlwheel2_2 = new SnManipulator;
 SnManipulator* backrwheel2_2 = new SnManipulator;
-
-SnManipulator* top2_3 = new SnManipulator;
-SnManipulator* bottom2_3 = new SnManipulator;
-SnManipulator* frontlwheel2_3 = new SnManipulator;
-SnManipulator* frontrwheel2_3 = new SnManipulator;
-SnManipulator* backlwheel2_3 = new SnManipulator;
-SnManipulator* backrwheel2_3 = new SnManipulator;
-
-SnManipulator* top2_4 = new SnManipulator;
-SnManipulator* bottom2_4 = new SnManipulator;
-SnManipulator* frontlwheel2_4 = new SnManipulator;
-SnManipulator* frontrwheel2_4 = new SnManipulator;
-SnManipulator* backlwheel2_4 = new SnManipulator;
-SnManipulator* backrwheel2_4 = new SnManipulator;
-
 //third row
 SnManipulator* top3_1 = new SnManipulator;
 SnManipulator* bottom3_1 = new SnManipulator;
@@ -102,27 +80,6 @@ SnManipulator* frontrwheel3_1 = new SnManipulator;
 SnManipulator* backlwheel3_1 = new SnManipulator;
 SnManipulator* backrwheel3_1 = new SnManipulator;
 
-SnManipulator* top3_2 = new SnManipulator;
-SnManipulator* bottom3_2 = new SnManipulator;
-SnManipulator* frontlwheel3_2 = new SnManipulator;
-SnManipulator* frontrwheel3_2 = new SnManipulator;
-SnManipulator* backlwheel3_2 = new SnManipulator;
-SnManipulator* backrwheel3_2 = new SnManipulator;
-
-SnManipulator* top3_3 = new SnManipulator;
-SnManipulator* bottom3_3 = new SnManipulator;
-SnManipulator* frontlwheel3_3 = new SnManipulator;
-SnManipulator* frontrwheel3_3 = new SnManipulator;
-SnManipulator* backlwheel3_3 = new SnManipulator;
-SnManipulator* backrwheel3_3 = new SnManipulator;
-
-SnManipulator* top3_4 = new SnManipulator;
-SnManipulator* bottom3_4 = new SnManipulator;
-SnManipulator* frontlwheel3_4 = new SnManipulator;
-SnManipulator* frontrwheel3_4 = new SnManipulator;
-SnManipulator* backlwheel3_4 = new SnManipulator;
-SnManipulator* backrwheel3_4 = new SnManipulator;
-
 //fourth row
 SnManipulator* top4_1 = new SnManipulator;
 SnManipulator* bottom4_1 = new SnManipulator;
@@ -130,27 +87,6 @@ SnManipulator* frontlwheel4_1 = new SnManipulator;
 SnManipulator* frontrwheel4_1 = new SnManipulator;
 SnManipulator* backlwheel4_1 = new SnManipulator;
 SnManipulator* backrwheel4_1 = new SnManipulator;
-
-SnManipulator* top4_2 = new SnManipulator;
-SnManipulator* bottom4_2 = new SnManipulator;
-SnManipulator* frontlwheel4_2 = new SnManipulator;
-SnManipulator* frontrwheel4_2 = new SnManipulator;
-SnManipulator* backlwheel4_2 = new SnManipulator;
-SnManipulator* backrwheel4_2 = new SnManipulator;
-
-SnManipulator* top4_3 = new SnManipulator;
-SnManipulator* bottom4_3 = new SnManipulator;
-SnManipulator* frontlwheel4_3 = new SnManipulator;
-SnManipulator* frontrwheel4_3 = new SnManipulator;
-SnManipulator* backlwheel4_3 = new SnManipulator;
-SnManipulator* backrwheel4_3 = new SnManipulator;
-
-SnManipulator* top4_4 = new SnManipulator;
-SnManipulator* bottom4_4 = new SnManipulator;
-SnManipulator* frontlwheel4_4 = new SnManipulator;
-SnManipulator* frontrwheel4_4 = new SnManipulator;
-SnManipulator* backlwheel4_4 = new SnManipulator;
-SnManipulator* backrwheel4_4 = new SnManipulator;
 
 //fifth row
 SnManipulator* top5_1 = new SnManipulator;
@@ -167,20 +103,6 @@ SnManipulator* frontrwheel5_2 = new SnManipulator;
 SnManipulator* backlwheel5_2 = new SnManipulator;
 SnManipulator* backrwheel5_2 = new SnManipulator;
 
-SnManipulator* top5_3 = new SnManipulator;
-SnManipulator* bottom5_3 = new SnManipulator;
-SnManipulator* frontlwheel5_3 = new SnManipulator;
-SnManipulator* frontrwheel5_3 = new SnManipulator;
-SnManipulator* backlwheel5_3 = new SnManipulator;
-SnManipulator* backrwheel5_3 = new SnManipulator;
-
-SnManipulator* top5_4 = new SnManipulator;
-SnManipulator* bottom5_4 = new SnManipulator;
-SnManipulator* frontlwheel5_4 = new SnManipulator;
-SnManipulator* frontrwheel5_4 = new SnManipulator;
-SnManipulator* backlwheel5_4 = new SnManipulator;
-SnManipulator* backrwheel5_4 = new SnManipulator;
-
 //sixth row
 SnManipulator* top6_1 = new SnManipulator;
 SnManipulator* bottom6_1 = new SnManipulator;
@@ -195,20 +117,6 @@ SnManipulator* frontlwheel6_2 = new SnManipulator;
 SnManipulator* frontrwheel6_2 = new SnManipulator;
 SnManipulator* backlwheel6_2 = new SnManipulator;
 SnManipulator* backrwheel6_2 = new SnManipulator;
-
-SnManipulator* top6_3 = new SnManipulator;
-SnManipulator* bottom6_3 = new SnManipulator;
-SnManipulator* frontlwheel6_3 = new SnManipulator;
-SnManipulator* frontrwheel6_3 = new SnManipulator;
-SnManipulator* backlwheel6_3 = new SnManipulator;
-SnManipulator* backrwheel6_3 = new SnManipulator;
-
-SnManipulator* top6_4 = new SnManipulator;
-SnManipulator* bottom6_4 = new SnManipulator;
-SnManipulator* frontlwheel6_4 = new SnManipulator;
-SnManipulator* frontrwheel6_4 = new SnManipulator;
-SnManipulator* backlwheel6_4 = new SnManipulator;
-SnManipulator* backrwheel6_4 = new SnManipulator;
 
 
 SnManipulator* persontranslation = new SnManipulator;
@@ -226,6 +134,8 @@ MyViewer::MyViewer ( int x, int y, int w, int h, const char* l ) : WsViewer(x,y,
 {
 	build_ui ();
 	build_scene ();
+	xpos = 0.0f;
+	ypos = 0.0f;
 }
 
 void MyViewer::build_ui ()
@@ -450,7 +360,7 @@ void MyViewer::buildfirstrow(){
 	//top part of car
 	SnPrimitive* tcar_sn1_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn1_1->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(-55.0f, 4.5f, 50.0f);
+	transm.setrans(-45.0f, 4.5f, 50.0f);
 
 	SnGroup* topgroup1_1 = new SnGroup;
 	topgroup1_1->add(tcar_sn1_1);
@@ -632,7 +542,7 @@ void MyViewer::buildfirstrow(){
 	//top part of car
 	SnPrimitive* tcar_sn1_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn1_2->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(-20.0f, 4.5f, 50.0f);
+	transm.setrans(0.0f, 4.5f, 50.0f);
 	SnGroup* topgroup1_2 = new SnGroup;
 	topgroup1_2->add(tcar_sn1_2);
 	top1_2->child(topgroup1_2);
@@ -688,7 +598,7 @@ void MyViewer::buildfirstrow(){
 	//top part of car
 	SnPrimitive* tcar_sn1_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn1_3->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(15.0f, 4.5f, 50.0f);
+	transm.setrans(45.0f, 4.5f, 50.0f);
 	SnGroup* topgroup1_3 = new SnGroup;
 	topgroup1_3->add(tcar_sn1_3);
 	top1_3->child(topgroup1_3);
@@ -739,79 +649,18 @@ void MyViewer::buildfirstrow(){
 	backrwheel1_3->child(backrwheelgroup1_3);
 	bottomsng1_3->add(backrwheel1_3);
 	backrwheel1_3->initial_mat(transm);
-
-	//fourth car 
-	//top part of car
-	SnPrimitive* tcar_sn1_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn1_4->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(50.0f, 4.5f, 50.0f);
-	SnGroup* topgroup1_4 = new SnGroup;
-	topgroup1_4->add(tcar_sn1_4);
-	top1_4->child(topgroup1_4);
-	top1_4->initial_mat(transm);
-
-	//body of car
-	SnPrimitive* bcar_sn1_4 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn1_4->prim().material.diffuse = GsColor::blue;
-	transm.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng1_4 = new SnGroup;
-	bottomsng1_4->add(bcar_sn1_4);
-	bottom1_4->child(bottomsng1_4);
-	topgroup1_4->add(bottom1_4);
-	bottom1_4->initial_mat(transm);
-
-	//front wheels - 13,14,15,16
-	GsModel& torus13 = *mymodel;
-	SnModel* frontlwheel_sn1_4 = new SnModel(&torus13);
-	transm.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup1_4 = new SnGroup;
-	flwheelgroup1_4->add(frontlwheel_sn1_4);
-	frontlwheel1_4->child(flwheelgroup1_4);
-	bottomsng1_4->add(frontlwheel1_4);
-	frontlwheel1_4->initial_mat(transm);
-	GsModel& torus14 = *mymodel;
-	SnModel* frontrwheel_sn1_4 = new SnModel(&torus14);
-	transm.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup1_4 = new SnGroup;
-	frwheelgroup1_4->add(frontrwheel_sn1_4);
-	frontrwheel1_4->child(frwheelgroup1_4);
-	bottomsng1_4->add(frontrwheel1_4);
-	frontrwheel1_4->initial_mat(transm);
-
-	//back wheels 
-	GsModel& torus15 = *mymodel;
-	SnModel* backlwheel_sn1_4 = new SnModel(&torus15);
-	transm.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backlwheelgroup1_4 = new SnGroup;
-	backlwheelgroup1_4->add(backlwheel_sn1_4);
-	backlwheel1_4->child(backlwheelgroup1_4);
-	bottomsng1_4->add(backlwheel1_4);
-	backlwheel1_4->initial_mat(transm);
-	GsModel& torus16 = *mymodel;
-	SnModel* backrwheel_sn1_4 = new SnModel(&torus16);
-	transm.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup1_4 = new SnGroup;
-	backrwheelgroup1_4->add(backrwheel_sn1_4);
-	backrwheel1_4->child(backrwheelgroup1_4);
-	bottomsng1_4->add(backrwheel1_4);
-	backrwheel1_4->initial_mat(transm);
-
-	rootg()->add(top1_2); rootg()->add(top1_3); rootg()->add(top1_4); //rootg()->add(top2_1);
-	
-	//car hierarchy of row 1 
-
+	rootg()->add(top1_2); rootg()->add(top1_3);
 
 }
 
 void MyViewer::buildsecondrow() {
 	SnPrimitive* tcar_sn2_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn2_1->prim().material.diffuse = GsColor::magenta;
-	transm2.setrans(-55.0f, 4.5f, 35.0f);
+	transm2.setrans(-30.0f, 4.5f, 35.0f);
 	SnGroup* topgroup2_1 = new SnGroup;
 	topgroup2_1->add(tcar_sn2_1);
 	top2_1->child(topgroup2_1);
 	top2_1->initial_mat(transm2);
-	rootg()->add(top2_1);
 
 	//body of car
 	SnPrimitive* bcar_sn2_1 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
@@ -864,7 +713,7 @@ void MyViewer::buildsecondrow() {
 	//top part of car
 	SnPrimitive* tcar_sn2_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn2_2->prim().material.diffuse = GsColor::magenta;
-	transm2.setrans(-20.0f, 4.5f, 35.0f);
+	transm2.setrans(30.0f, 4.5f, 35.0f);
 	SnGroup* topgroup2_2 = new SnGroup;
 	topgroup2_2->add(tcar_sn2_2);
 	top2_2->child(topgroup2_2);
@@ -916,119 +765,7 @@ void MyViewer::buildsecondrow() {
 	bottomsng2_2->add(backrwheel2_2);
 	backrwheel2_2->initial_mat(transm2);
 
-	//third car 
-	//top part of car
-	SnPrimitive* tcar_sn2_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn2_3->prim().material.diffuse = GsColor::magenta;
-	transm2.setrans(15.0f, 4.5f, 35.0f);
-	SnGroup* topgroup2_3 = new SnGroup;
-	topgroup2_3->add(tcar_sn2_3);
-	top2_3->child(topgroup2_3);
-	top2_3->initial_mat(transm2);
-
-	//body of car
-	SnPrimitive* bcar_sn2_3 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn2_3->prim().material.diffuse = GsColor::blue;
-	transm2.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng2_3 = new SnGroup;
-	bottomsng2_3->add(bcar_sn2_3);
-	bottom2_3->child(bottomsng2_3);
-	topgroup2_3->add(bottom2_3);
-	bottom2_3->initial_mat(transm2);
-
-	//front wheels - 25,26,27,28
-	GsModel& torus25 = *mymodel;
-	SnModel* frontlwheel_sn2_3 = new SnModel(&torus25);
-	transm2.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup2_3 = new SnGroup;
-	flwheelgroup2_3->add(frontlwheel_sn2_3);
-	frontlwheel2_3->child(flwheelgroup2_3);
-	bottomsng2_3->add(frontlwheel2_3);
-	frontlwheel2_3->initial_mat(transm2);
-	GsModel& torus26 = *mymodel;
-	SnModel* frontrwheel_sn2_3 = new SnModel(&torus26);
-	transm2.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup2_3 = new SnGroup;
-	frwheelgroup2_3->add(frontrwheel_sn2_3);
-	frontrwheel2_3->child(frwheelgroup2_3);
-	bottomsng2_3->add(frontrwheel2_3);
-	frontrwheel2_3->initial_mat(transm2);
-
-	//back wheels 
-	GsModel& torus27 = *mymodel;
-	SnModel* backlwheel_sn2_3 = new SnModel(&torus27);
-	transm2.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup2_3 = new SnGroup;
-	backwheelgroup2_3->add(backlwheel_sn2_3);
-	backlwheel2_3->child(backwheelgroup2_3);
-	bottomsng2_3->add(backlwheel2_3);
-	backlwheel2_3->initial_mat(transm2);
-	GsModel& torus28 = *mymodel;
-	SnModel* backrwheel_sn2_3 = new SnModel(&torus28);
-	transm2.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup2_3 = new SnGroup;
-	backrwheelgroup2_3->add(backrwheel_sn2_3);
-	backrwheel2_3->child(backrwheelgroup2_3);
-	bottomsng2_3->add(backrwheel2_3);
-	backrwheel2_3->initial_mat(transm2);
-
-	//fourth car 
-	//top part of car
-	SnPrimitive* tcar_sn2_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn2_4->prim().material.diffuse = GsColor::magenta;
-	transm2.setrans(50.0f, 4.5f, 35.0f);
-	SnGroup* topgroup2_4 = new SnGroup;
-	topgroup2_4->add(tcar_sn2_4);
-	top2_4->child(topgroup2_4);
-	top2_4->initial_mat(transm2);
-
-	//body of car
-	SnPrimitive* bcar_sn2_4 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn2_4->prim().material.diffuse = GsColor::blue;
-	transm2.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng2_4 = new SnGroup;
-	bottomsng2_4->add(bcar_sn2_4);
-	bottom2_4->child(bottomsng2_4);
-	topgroup2_4->add(bottom2_4);
-	bottom2_4->initial_mat(transm2);
-	
-	//front wheels - 29,30,31,32
-	GsModel& torus29 = *mymodel;
-	SnModel* frontlwheel_sn2_4 = new SnModel(&torus29);
-	transm2.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup2_4 = new SnGroup;
-	flwheelgroup2_4->add(frontlwheel_sn2_4);
-	frontlwheel2_4->child(flwheelgroup2_4);
-	bottomsng2_4->add(frontlwheel2_4);
-	frontlwheel2_4->initial_mat(transm2);
-	GsModel& torus30 = *mymodel;
-	SnModel* frontrwheel_sn2_4 = new SnModel(&torus30);
-	transm2.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup2_4 = new SnGroup;
-	frwheelgroup2_4->add(frontrwheel_sn2_4);
-	frontrwheel2_4->child(frwheelgroup2_4);
-	bottomsng2_4->add(frontrwheel2_4);
-	frontrwheel2_4->initial_mat(transm2);
-	
-	//back wheels 
-	GsModel& torus31 = *mymodel;
-	SnModel* backlwheel_sn2_4 = new SnModel(&torus31);
-	transm2.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup2_4 = new SnGroup;
-	backwheelgroup2_4->add(backlwheel_sn2_4);
-	backlwheel2_4->child(backwheelgroup2_4);
-	bottomsng2_4->add(backlwheel2_4);
-	backlwheel2_4->initial_mat(transm2);
-	GsModel& torus32 = *mymodel;
-	SnModel* backrwheel_sn2_4 = new SnModel(&torus32);
-	transm2.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup2_4 = new SnGroup;
-	backrwheelgroup2_4->add(backrwheel_sn2_4);
-	backrwheel2_4->child(backrwheelgroup2_4);
-	bottomsng2_4->add(backrwheel2_4);
-	backrwheel2_4->initial_mat(transm2);
-
-	rootg()->add(top2_2); rootg()->add(top2_3); rootg()->add(top2_4);
+	rootg()->add(top2_1); rootg()->add(top2_2);
 }
 
 void MyViewer::buildthirdrow() {
@@ -1087,176 +824,7 @@ void MyViewer::buildthirdrow() {
 	backrwheel3_1->child(backwheelgroup3_1);
 	bottomsng3_1->add(backrwheel2_1);
 	backrwheel3_1->initial_mat(transm3);
-
-	//second car 
-	//top part of car
-	SnPrimitive* tcar_sn3_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn3_2->prim().material.diffuse = GsColor::magenta;
-	transm3.setrans(-20.0f, 4.5f, 20.0f);
-	SnGroup* topgroup3_2 = new SnGroup;
-	topgroup3_2->add(tcar_sn3_2);
-	top3_2->child(topgroup3_2);
-	top3_2->initial_mat(transm3);
-
-	//body of car
-	SnPrimitive* bcar_sn3_2 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn3_2->prim().material.diffuse = GsColor::blue;
-	transm3.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng3_2 = new SnGroup;
-	bottomsng3_2->add(bcar_sn3_2);
-	bottom3_2->child(bottomsng3_2);
-	topgroup3_2->add(bottom3_2);
-	bottom3_2->initial_mat(transm3);
-
-	//front wheels - 39,40,41,42
-	GsModel& torus39 = *mymodel;
-	SnModel* frontlwheel_sn3_2 = new SnModel(&torus39);
-	transm3.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup3_2 = new SnGroup;
-	flwheelgroup3_2->add(frontlwheel_sn3_2);
-	frontlwheel3_2->child(flwheelgroup3_2);
-	bottomsng3_2->add(frontlwheel3_2);
-	frontlwheel3_2->initial_mat(transm3);
-	GsModel& torus40 = *mymodel;
-	SnModel* frontrwheel_sn3_2 = new SnModel(&torus40);
-	transm3.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup3_2 = new SnGroup;
-	frwheelgroup3_2->add(frontrwheel_sn3_2);
-	frontrwheel3_2->child(frwheelgroup3_2);
-	bottomsng3_2->add(frontrwheel3_2);
-	frontrwheel3_2->initial_mat(transm3);
-
-	//back wheels 
-	GsModel& torus41 = *mymodel;
-	SnModel* backlwheel_sn3_2 = new SnModel(&torus41);
-	transm3.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup3_2 = new SnGroup;
-	backwheelgroup3_2->add(backlwheel_sn3_2);
-	backlwheel3_2->child(backwheelgroup3_2);
-	bottomsng3_2->add(backlwheel3_2);
-	backlwheel3_2->initial_mat(transm3);
-	GsModel& torus42 = *mymodel;
-	SnModel* backrwheel_sn3_2 = new SnModel(&torus42);
-	transm3.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup3_2 = new SnGroup;
-	backrwheelgroup3_2->add(backrwheel_sn3_2);
-	backrwheel3_2->child(backrwheelgroup3_2);
-	bottomsng3_2->add(backrwheel3_2);
-	backrwheel3_2->initial_mat(transm3);
-
-	//third car 
-	//top part of car
-	SnPrimitive* tcar_sn3_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn3_3->prim().material.diffuse = GsColor::magenta;
-	transm3.setrans(15.0f, 4.5f, 20.0f);
-	SnGroup* topgroup3_3 = new SnGroup;
-	topgroup3_3->add(tcar_sn3_3);
-	top3_3->child(topgroup3_3);
-	top3_3->initial_mat(transm3);
-
-	//body of car
-	SnPrimitive* bcar_sn3_3 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn3_3->prim().material.diffuse = GsColor::blue;
-	transm3.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng3_3 = new SnGroup;
-	bottomsng3_3->add(bcar_sn3_3);
-	bottom3_3->child(bottomsng3_3);
-	topgroup3_3->add(bottom3_3);
-	bottom3_3->initial_mat(transm3);
-
-	//front wheels - 43,44,45,46
-	GsModel& torus43 = *mymodel;
-	SnModel* frontlwheel_sn3_3 = new SnModel(&torus43);
-	transm3.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup3_3 = new SnGroup;
-	flwheelgroup3_3->add(frontlwheel_sn3_3);
-	frontlwheel3_3->child(flwheelgroup3_3);
-	bottomsng3_3->add(frontlwheel3_3);
-	frontlwheel3_3->initial_mat(transm3);
-	GsModel& torus44 = *mymodel;
-	SnModel* frontrwheel_sn3_3 = new SnModel(&torus44);
-	transm3.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup3_3 = new SnGroup;
-	frwheelgroup3_3->add(frontrwheel_sn3_3);
-	frontrwheel3_3->child(frwheelgroup3_3);
-	bottomsng3_3->add(frontrwheel3_3);
-	frontrwheel3_3->initial_mat(transm3);
-
-	//back wheels 
-	GsModel& torus45 = *mymodel;
-	SnModel* backlwheel_sn3_3 = new SnModel(&torus45);
-	transm3.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup3_3 = new SnGroup;
-	backwheelgroup3_3->add(backlwheel_sn3_3);
-	backlwheel3_3->child(backwheelgroup3_3);
-	bottomsng3_3->add(backlwheel3_3);
-	backlwheel3_3->initial_mat(transm3);
-	GsModel& torus46 = *mymodel;
-	SnModel* backrwheel_sn3_3 = new SnModel(&torus46);
-	transm3.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup3_3 = new SnGroup;
-	backrwheelgroup3_3->add(backrwheel_sn3_3);
-	backrwheel3_3->child(backrwheelgroup3_3);
-	bottomsng3_3->add(backrwheel3_3);
-	backrwheel3_3->initial_mat(transm3);
-
-	//fourth car 
-	//top part of car
-	SnPrimitive* tcar_sn3_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn3_4->prim().material.diffuse = GsColor::magenta;
-	transm3.setrans(50.0f, 4.5f, 20.0f);
-	SnGroup* topgroup3_4 = new SnGroup;
-	topgroup3_4->add(tcar_sn3_4);
-	top3_4->child(topgroup3_4);
-	top3_4->initial_mat(transm3);
-
-	//body of car
-	SnPrimitive* bcar_sn3_4 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn3_4->prim().material.diffuse = GsColor::blue;
-	transm3.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng3_4 = new SnGroup;
-	bottomsng3_4->add(bcar_sn3_4);
-	bottom3_4->child(bottomsng3_4);
-	topgroup3_4->add(bottom3_4);
-	bottom3_4->initial_mat(transm3);
-
-	//front wheels - 47,48,49,50
-	GsModel& torus47 = *mymodel;
-	SnModel* frontlwheel_sn3_4 = new SnModel(&torus47);
-	transm3.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup3_4 = new SnGroup;
-	flwheelgroup3_4->add(frontlwheel_sn3_4);
-	frontlwheel3_4->child(flwheelgroup3_4);
-	bottomsng3_4->add(frontlwheel2_4);
-	frontlwheel3_4->initial_mat(transm3);
-	GsModel& torus48 = *mymodel;
-	SnModel* frontrwheel_sn3_4 = new SnModel(&torus48);
-	transm3.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup3_4 = new SnGroup;
-	frwheelgroup3_4->add(frontrwheel_sn3_4);
-	frontrwheel3_4->child(frwheelgroup3_4);
-	bottomsng3_4->add(frontrwheel3_4);
-	frontrwheel3_4->initial_mat(transm3);
-
-	//back wheels 
-	GsModel& torus49 = *mymodel;
-	SnModel* backlwheel_sn3_4 = new SnModel(&torus49);
-	transm3.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup3_4 = new SnGroup;
-	backwheelgroup3_4->add(backlwheel_sn3_4);
-	backlwheel3_4->child(backwheelgroup3_4);
-	bottomsng3_4->add(backlwheel3_4);
-	backlwheel3_4->initial_mat(transm3);
-	GsModel& torus50 = *mymodel;
-	SnModel* backrwheel_sn3_4 = new SnModel(&torus50);
-	transm3.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup3_4 = new SnGroup;
-	backrwheelgroup3_4->add(backrwheel_sn3_4);
-	backrwheel3_4->child(backrwheelgroup3_4);
-	bottomsng3_4->add(backrwheel3_4);
-	backrwheel3_4->initial_mat(transm3);
-
-	rootg()->add(top3_2); rootg()->add(top3_3); rootg()->add(top3_4);
+	//rootg()->add(top3_2); rootg()->add(top3_3); rootg()->add(top3_4);
 }
 void MyViewer::buildfourthrow() {
 	SnPrimitive* tcar_sn4_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
@@ -1315,175 +883,6 @@ void MyViewer::buildfourthrow() {
 	bottomsng4_1->add(backrwheel4_1);
 	backrwheel4_1->initial_mat(transm4);
 
-	//second car 
-	//top part of car
-	SnPrimitive* tcar_sn4_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn4_2->prim().material.diffuse = GsColor::magenta;
-	transm4.setrans(-20.0f, 4.5f, -15.0f);
-	SnGroup* topgroup4_2 = new SnGroup;
-	topgroup4_2->add(tcar_sn4_2);
-	top4_2->child(topgroup4_2);
-	top4_2->initial_mat(transm4);
-
-	//body of car
-	SnPrimitive* bcar_sn4_2 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn4_2->prim().material.diffuse = GsColor::blue;
-	transm4.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng4_2 = new SnGroup;
-	bottomsng4_2->add(bcar_sn4_2);
-	bottom4_2->child(bottomsng4_2);
-	topgroup4_2->add(bottom4_2);
-	bottom4_2->initial_mat(transm4);
-
-	//front wheels - 55,56,57,58
-	GsModel& torus55 = *mymodel;
-	SnModel* frontlwheel_sn4_2 = new SnModel(&torus55);
-	transm4.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup4_2 = new SnGroup;
-	flwheelgroup4_2->add(frontlwheel_sn4_2);
-	frontlwheel4_2->child(flwheelgroup4_2);
-	bottomsng4_2->add(frontlwheel4_2);
-	frontlwheel4_2->initial_mat(transm4);
-	GsModel& torus56 = *mymodel;
-	SnModel* frontrwheel_sn4_2 = new SnModel(&torus56);
-	transm4.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup4_2 = new SnGroup;
-	frwheelgroup4_2->add(frontrwheel_sn4_2);
-	frontrwheel4_2->child(frwheelgroup4_2);
-	bottomsng4_2->add(frontrwheel4_2);
-	frontrwheel4_2->initial_mat(transm4);
-
-	//back wheels 
-	GsModel& torus57 = *mymodel;
-	SnModel* backlwheel_sn4_2 = new SnModel(&torus57);
-	transm4.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup4_2 = new SnGroup;
-	backwheelgroup4_2->add(backlwheel_sn4_2);
-	backlwheel4_2->child(backwheelgroup4_2);
-	bottomsng4_2->add(backlwheel4_2);
-	backlwheel4_2->initial_mat(transm4);
-	GsModel& torus58 = *mymodel;
-	SnModel* backrwheel_sn4_2 = new SnModel(&torus58);
-	transm4.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup4_2 = new SnGroup;
-	backrwheelgroup4_2->add(backrwheel_sn4_2);
-	backrwheel4_2->child(backrwheelgroup4_2);
-	bottomsng4_2->add(backrwheel4_2);
-	backrwheel4_2->initial_mat(transm4);
-
-	//third car 
-	//top part of car
-	SnPrimitive* tcar_sn4_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn4_3->prim().material.diffuse = GsColor::magenta;
-	transm4.setrans(15.0f, 4.5f, -15.0f);
-	SnGroup* topgroup4_3 = new SnGroup;
-	topgroup4_3->add(tcar_sn4_3);
-	top4_3->child(topgroup4_3);
-	top4_3->initial_mat(transm4);
-
-	//body of car
-	SnPrimitive* bcar_sn4_3 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn4_3->prim().material.diffuse = GsColor::blue;
-	transm4.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng4_3 = new SnGroup;
-	bottomsng4_3->add(bcar_sn4_3);
-	bottom4_3->child(bottomsng4_3);
-	topgroup4_3->add(bottom4_3);
-	bottom4_3->initial_mat(transm4);
-
-	//front wheels - 59,60,61,62
-	GsModel& torus59 = *mymodel;
-	SnModel* frontlwheel_sn4_3 = new SnModel(&torus59);
-	transm4.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup4_3 = new SnGroup;
-	flwheelgroup4_3->add(frontlwheel_sn4_3);
-	frontlwheel4_3->child(flwheelgroup4_3);
-	bottomsng4_3->add(frontlwheel4_3);
-	frontlwheel4_3->initial_mat(transm4);
-	GsModel& torus60 = *mymodel;
-	SnModel* frontrwheel_sn4_3 = new SnModel(&torus60);
-	transm4.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup4_3 = new SnGroup;
-	frwheelgroup4_3->add(frontrwheel_sn4_3);
-	frontrwheel4_3->child(frwheelgroup4_3);
-	bottomsng4_3->add(frontrwheel4_3);
-	frontrwheel4_3->initial_mat(transm4);
-
-	//back wheels 
-	GsModel& torus61 = *mymodel;
-	SnModel* backlwheel_sn4_3 = new SnModel(&torus61);
-	transm4.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup4_3 = new SnGroup;
-	backwheelgroup4_3->add(backlwheel_sn4_3);
-	backlwheel4_3->child(backwheelgroup4_3);
-	bottomsng4_3->add(backlwheel4_3);
-	backlwheel4_3->initial_mat(transm4);
-	GsModel& torus62 = *mymodel;
-	SnModel* backrwheel_sn4_3 = new SnModel(&torus62);
-	transm4.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup4_3 = new SnGroup;
-	backrwheelgroup4_3->add(backrwheel_sn4_3);
-	backrwheel4_3->child(backrwheelgroup4_3);
-	bottomsng4_3->add(backrwheel4_3);
-	backrwheel4_3->initial_mat(transm4);
-
-	//fourth car 
-	//top part of car
-	SnPrimitive* tcar_sn4_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn4_4->prim().material.diffuse = GsColor::magenta;
-	transm4.setrans(50.0f, 4.5f, -15.0f);
-	SnGroup* topgroup4_4 = new SnGroup;
-	topgroup4_4->add(tcar_sn4_4);
-	top4_4->child(topgroup4_4);
-	top4_4->initial_mat(transm4);
-
-	//body of car
-	SnPrimitive* bcar_sn4_4 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn4_4->prim().material.diffuse = GsColor::blue;
-	transm4.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng4_4 = new SnGroup;
-	bottomsng4_4->add(bcar_sn4_4);
-	bottom4_4->child(bottomsng4_4);
-	topgroup4_4->add(bottom4_4);
-	bottom4_4->initial_mat(transm4);
-
-	//front wheels - 63,64,65,66
-	GsModel& torus63 = *mymodel;
-	SnModel* frontlwheel_sn4_4 = new SnModel(&torus63);
-	transm4.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup4_4 = new SnGroup;
-	flwheelgroup4_4->add(frontlwheel_sn4_4);
-	frontlwheel4_4->child(flwheelgroup4_4);
-	bottomsng4_4->add(frontlwheel4_4);
-	frontlwheel4_4->initial_mat(transm4);
-	GsModel& torus64 = *mymodel;
-	SnModel* frontrwheel_sn4_4 = new SnModel(&torus64);
-	transm4.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup4_4 = new SnGroup;
-	frwheelgroup4_4->add(frontrwheel_sn4_4);
-	frontrwheel4_4->child(frwheelgroup4_4);
-	bottomsng4_4->add(frontrwheel4_4);
-	frontrwheel4_4->initial_mat(transm4);
-
-	//back wheels 
-	GsModel& torus65 = *mymodel;
-	SnModel* backlwheel_sn4_4 = new SnModel(&torus65);
-	transm4.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup4_4 = new SnGroup;
-	backwheelgroup4_4->add(backlwheel_sn4_4);
-	backlwheel4_4->child(backwheelgroup4_4);
-	bottomsng4_4->add(backlwheel4_4);
-	backlwheel4_4->initial_mat(transm4);
-	GsModel& torus66 = *mymodel;
-	SnModel* backrwheel_sn4_4 = new SnModel(&torus66);
-	transm4.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup4_4 = new SnGroup;
-	backrwheelgroup4_4->add(backrwheel_sn4_4);
-	backrwheel4_4->child(backrwheelgroup4_4);
-	bottomsng4_4->add(backrwheel4_4);
-	backrwheel4_4->initial_mat(transm4);
-	
-	rootg()->add(top4_2); rootg()->add(top4_3); rootg()->add(top4_4);
 }
 void MyViewer::buildfifthrow() {
 	SnPrimitive* tcar_sn5_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
@@ -1493,7 +892,6 @@ void MyViewer::buildfifthrow() {
 	topgroup5_1->add(tcar_sn5_1);
 	top5_1->child(topgroup5_1);
 	top5_1->initial_mat(transm5);
-	rootg()->add(top5_1);
 
 	//body of car
 	SnPrimitive* bcar_sn5_1 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
@@ -1546,7 +944,7 @@ void MyViewer::buildfifthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn5_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn5_2->prim().material.diffuse = GsColor::magenta;
-	transm5.setrans(-20.0f, 4.5f, -30.0f);
+	transm5.setrans(10.0f, 4.5f, -30.0f);
 	SnGroup* topgroup5_2 = new SnGroup;
 	topgroup5_2->add(tcar_sn5_2);
 	top5_2->child(topgroup5_2);
@@ -1598,119 +996,8 @@ void MyViewer::buildfifthrow() {
 	bottomsng5_2->add(backrwheel5_2);
 	backrwheel5_2->initial_mat(transm5);
 
-	//third car 
-	//top part of car
-	SnPrimitive* tcar_sn5_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn5_3->prim().material.diffuse = GsColor::magenta;
-	transm5.setrans(15.0f, 4.5f, -30.0f);
-	SnGroup* topgroup5_3 = new SnGroup;
-	topgroup5_3->add(tcar_sn5_3);
-	top5_3->child(topgroup5_3);
-	top5_3->initial_mat(transm5);
-
-	//body of car
-	SnPrimitive* bcar_sn5_3 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn5_3->prim().material.diffuse = GsColor::blue;
-	transm5.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng5_3 = new SnGroup;
-	bottomsng5_3->add(bcar_sn5_3);
-	bottom5_3->child(bottomsng5_3);
-	topgroup5_3->add(bottom5_3);
-	bottom5_3->initial_mat(transm5);
-
-	//front wheels - 75,76,77,78
-	GsModel& torus75 = *mymodel;
-	SnModel* frontlwheel_sn5_3 = new SnModel(&torus75);
-	transm5.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup5_3 = new SnGroup;
-	flwheelgroup5_3->add(frontlwheel_sn5_3);
-	frontlwheel5_3->child(flwheelgroup5_3);
-	bottomsng5_3->add(frontlwheel5_3);
-	frontlwheel5_3->initial_mat(transm5);
-	GsModel& torus76 = *mymodel;
-	SnModel* frontrwheel_sn5_3 = new SnModel(&torus76);
-	transm5.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup5_3 = new SnGroup;
-	frwheelgroup5_3->add(frontrwheel_sn5_3);
-	frontrwheel5_3->child(frwheelgroup5_3);
-	bottomsng5_3->add(frontrwheel5_3);
-	frontrwheel5_3->initial_mat(transm5);
-
-	//back wheels 
-	GsModel& torus77 = *mymodel;
-	SnModel* backlwheel_sn5_3 = new SnModel(&torus77);
-	transm5.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup5_3 = new SnGroup;
-	backwheelgroup5_3->add(backlwheel_sn5_3);
-	backlwheel5_3->child(backwheelgroup5_3);
-	bottomsng5_3->add(backlwheel5_3);
-	backlwheel5_3->initial_mat(transm5);
-	GsModel& torus78 = *mymodel;
-	SnModel* backrwheel_sn5_3 = new SnModel(&torus78);
-	transm5.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup5_3 = new SnGroup;
-	backrwheelgroup5_3->add(backrwheel_sn5_3);
-	backrwheel5_3->child(backrwheelgroup5_3);
-	bottomsng5_3->add(backrwheel5_3);
-	backrwheel5_3->initial_mat(transm5);
-
-	//fourth car 
-	//top part of car
-	SnPrimitive* tcar_sn5_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn5_4->prim().material.diffuse = GsColor::magenta;
-	transm5.setrans(50.0f, 4.5f, -30.0f);
-	SnGroup* topgroup5_4 = new SnGroup;
-	topgroup5_4->add(tcar_sn5_4);
-	top5_4->child(topgroup5_4);
-	top5_4->initial_mat(transm5);
-
-	//body of car
-	SnPrimitive* bcar_sn5_4 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn5_4->prim().material.diffuse = GsColor::blue;
-	transm5.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng5_4 = new SnGroup;
-	bottomsng5_4->add(bcar_sn5_4);
-	bottom5_4->child(bottomsng5_4);
-	topgroup5_4->add(bottom5_4);
-	bottom5_4->initial_mat(transm5);
-
-	//front wheels - 79,80,81,82
-	GsModel& torus79 = *mymodel;
-	SnModel* frontlwheel_sn5_4 = new SnModel(&torus79);
-	transm5.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup5_4 = new SnGroup;
-	flwheelgroup5_4->add(frontlwheel_sn5_4);
-	frontlwheel5_4 ->child(flwheelgroup5_4);
-	bottomsng5_4->add(frontlwheel5_4);
-	frontlwheel5_4->initial_mat(transm5);
-	GsModel& torus80 = *mymodel;
-	SnModel* frontrwheel_sn5_4 = new SnModel(&torus80);
-	transm5.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup5_4 = new SnGroup;
-	frwheelgroup5_4->add(frontrwheel_sn5_4);
-	frontrwheel5_4->child(frwheelgroup5_4);
-	bottomsng5_4->add(frontrwheel5_4);
-	frontrwheel5_4->initial_mat(transm5);
-
-	//back wheels 
-	GsModel& torus81 = *mymodel;
-	SnModel* backlwheel_sn5_4 = new SnModel(&torus81);
-	transm5.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup5_4 = new SnGroup;
-	backwheelgroup5_4->add(backlwheel_sn5_4);
-	backlwheel5_4->child(backwheelgroup5_4);
-	bottomsng5_4->add(backlwheel5_4);
-	backlwheel5_4->initial_mat(transm5);
-	GsModel& torus82 = *mymodel;
-	SnModel* backrwheel_sn5_4 = new SnModel(&torus82);
-	transm5.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup5_4 = new SnGroup;
-	backrwheelgroup5_4->add(backrwheel_sn5_4);
-	backrwheel5_4->child(backrwheelgroup5_4);
-	bottomsng5_4->add(backrwheel5_4);
-	backrwheel5_4->initial_mat(transm5);
-
-	rootg()->add(top5_2); rootg()->add(top5_3); rootg()->add(top5_4);
+	rootg()->add(top5_1);
+	rootg()->add(top5_2);
 }
 void MyViewer::buildsixthrow() {
 	SnPrimitive* tcar_sn6_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
@@ -1824,120 +1111,7 @@ void MyViewer::buildsixthrow() {
 	backrwheel6_2->child(backrwheelgroup6_2);
 	bottomsng6_2->add(backrwheel6_2);
 	backrwheel6_2->initial_mat(transm6);
-
-	//third car 
-	//top part of car
-	SnPrimitive* tcar_sn6_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn6_3->prim().material.diffuse = GsColor::magenta;
-	transm6.setrans(15.0f, 4.5f, -50.0f);
-	SnGroup* topgroup6_3 = new SnGroup;
-	topgroup6_3->add(tcar_sn6_3);
-	top6_3->child(topgroup6_3);
-	top6_3->initial_mat(transm6);
-
-	//body of car
-	SnPrimitive* bcar_sn6_3 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn6_3->prim().material.diffuse = GsColor::blue;
-	transm6.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng6_3 = new SnGroup;
-	bottomsng6_3->add(bcar_sn6_3);
-	bottom6_3->child(bottomsng6_3);
-	topgroup6_3->add(bottom6_3);
-	bottom6_3->initial_mat(transm6);
-
-	//front wheels - 91,92,93,94
-	GsModel& torus91 = *mymodel;
-	SnModel* frontlwheel_sn6_3 = new SnModel(&torus91);
-	transm6.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup6_3 = new SnGroup;
-	flwheelgroup6_3->add(frontlwheel_sn6_3);
-	frontlwheel6_3->child(flwheelgroup6_3);
-	bottomsng6_3->add(frontlwheel6_3);
-	frontlwheel6_3->initial_mat(transm6);
-	GsModel& torus92 = *mymodel;
-	SnModel* frontrwheel_sn6_3 = new SnModel(&torus92);
-	transm6.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup6_3 = new SnGroup;
-	frwheelgroup6_3->add(frontrwheel_sn6_3);
-	frontrwheel6_3->child(frwheelgroup6_3);
-	bottomsng6_3->add(frontrwheel6_3);
-	frontrwheel6_3->initial_mat(transm6);
-
-	//back wheels 
-	GsModel& torus93 = *mymodel;
-	SnModel* backlwheel_sn6_3 = new SnModel(&torus93);
-	transm6.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup6_3 = new SnGroup;
-	backwheelgroup6_3->add(backlwheel_sn6_3);
-	backlwheel6_3->child(backwheelgroup6_3);
-	bottomsng6_3->add(backlwheel6_3);
-	backlwheel6_3->initial_mat(transm6);
-	GsModel& torus94 = *mymodel;
-	SnModel* backrwheel_sn6_3 = new SnModel(&torus94);
-	transm6.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup6_3 = new SnGroup;
-	backrwheelgroup6_3->add(backrwheel_sn6_3);
-	backrwheel6_3->child(backrwheelgroup6_3);
-	bottomsng6_3->add(backrwheel6_3);
-	backrwheel6_3->initial_mat(transm6);
-
-	//fourth car 
-	//top part of car
-	SnPrimitive* tcar_sn6_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn6_4->prim().material.diffuse = GsColor::magenta;
-	transm6.setrans(50.0f, 4.5f, -50.0f);
-	SnGroup* topgroup6_4 = new SnGroup;
-	topgroup6_4->add(tcar_sn6_4);
-	top6_4->child(topgroup6_4);
-	top6_4->initial_mat(transm6);
-
-	//body of car
-	SnPrimitive* bcar_sn6_4 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn6_4->prim().material.diffuse = GsColor::blue;
-	transm6.setrans(0.0f, -2.0f, 0.0f);
-	SnGroup* bottomsng6_4 = new SnGroup;
-	bottomsng6_4->add(bcar_sn6_4);
-	bottom6_4->child(bottomsng6_4);
-	topgroup6_4->add(bottom6_4);
-	bottom6_4->initial_mat(transm6);
-
-	//front wheels - 95,96,97,98
-	GsModel& torus95 = *mymodel;
-	SnModel* frontlwheel_sn6_4 = new SnModel(&torus95);
-	transm6.setrans(5.0f, -1.0f, 4.5f);
-	SnGroup* flwheelgroup6_4 = new SnGroup;
-	flwheelgroup6_4->add(frontlwheel_sn6_4);
-	frontlwheel6_4->child(flwheelgroup6_4);
-	bottomsng6_4->add(frontlwheel6_4);
-	frontlwheel6_4->initial_mat(transm6);
-	GsModel& torus96 = *mymodel;
-	SnModel* frontrwheel_sn6_4 = new SnModel(&torus96);
-	transm6.setrans(5.0f, -1.0f, -4.5f);
-	SnGroup* frwheelgroup6_4 = new SnGroup;
-	frwheelgroup6_4->add(frontrwheel_sn6_4);
-	frontrwheel6_4->child(frwheelgroup6_4);
-	bottomsng6_4->add(frontrwheel6_4);
-	frontrwheel6_4->initial_mat(transm6);
-
-	//back wheels 
-	GsModel& torus97 = *mymodel;
-	SnModel* backlwheel_sn6_4 = new SnModel(&torus97);
-	transm6.setrans(-5.0f, -1.0f, 4.5f);
-	SnGroup* backwheelgroup6_4 = new SnGroup;
-	backwheelgroup6_4->add(backlwheel_sn6_4);
-	backlwheel6_4->child(backwheelgroup6_4);
-	bottomsng6_4->add(backlwheel6_4);
-	backlwheel6_4->initial_mat(transm6);
-	GsModel& torus98 = *mymodel;
-	SnModel* backrwheel_sn6_4 = new SnModel(&torus98);
-	transm6.setrans(-5.0f, -1.0f, -4.5f);
-	SnGroup* backrwheelgroup6_4 = new SnGroup;
-	backrwheelgroup6_4->add(backrwheel_sn6_4);
-	backrwheel6_4->child(backrwheelgroup6_4);
-	bottomsng6_4->add(backrwheel6_4);
-	backrwheel6_4->initial_mat(transm6);
-
-	rootg()->add(top6_2); rootg()->add(top6_3); rootg()->add(top6_4);
+	//rootg()->add(top6_2);
 
 }
 void MyViewer::buildenv() {
@@ -1978,15 +1152,94 @@ void MyViewer::buildenv() {
 	add_model(p, GsVec(-2.1f, 0.9f, -7.0f));
 }
 
+void MyViewer::animatecars(){
+	if (_animating) return; // avoid recursive calls
+	_animating = true;
+
+	GsMat m = top1_1->mat();
+	GsMat m2 = top1_2->mat();
+	GsMat m3 = top1_3->mat();
+	GsMat m4 = top2_1->mat();
+	GsMat m5 = top2_2->mat();
+	GsMat m6 = top3_1->mat();
+	GsMat m7 = top4_1->mat();
+	GsMat m8 = top5_1->mat();
+	GsMat m9 = top5_2->mat();
+	GsMat m10 = top6_1->mat();
+
+	double frdt = 1.0 / 30.0; // delta time to reach given number of frames per second
+	double v = 4; // target velocity is 1 unit per second
+	double t = 0, lt = 0, t0 = gs_time();
+	do // run for a while:
+	{
+		while (t - lt < frdt) { ws_check(); t = gs_time() - t0; } // wait until it is time for next frame
+		lt = t;		//makes speed constant
+		double yinc = 1.3;
+
+		if (m.e14 > 70.0f) m.e14 = -70.0f;
+		if (m2.e14 > 70.0f) m2.e14 = -70.0f;
+		if (m3.e14 > 70.0f) m3.e14 = -70.0f;
+		m.e14 += (float)yinc;
+		m2.e14 += (float)yinc;
+		m3.e14 += (float)yinc;
+		top1_1->initial_mat(m);
+		top1_2->initial_mat(m2);
+		top1_3->initial_mat(m3);
+
+		//second row
+		double yinc2 = 0.9;
+		
+		if (m4.e14 < -70.0f) m4.e14 = 70.0f;
+		if (m5.e14 < -70.0f) m5.e14 = 70.0f;
+		m4.e14 -= (float)yinc2;
+		m5.e14 -= (float)yinc2;
+		top2_1->initial_mat(m4);
+		top2_2->initial_mat(m5);
+
+		double yinc3 = 3.0;
+		if (m6.e14 < -70.0f) m6.e14 = 70.0f;
+		m6.e14 -= (float)yinc3;
+		top3_1->initial_mat(m6);
+
+		double yinc4 = 4.0;
+		if (m7.e14 > 70.0f) m7.e14 = -70.0f;
+		m7.e14 += (float)yinc4;
+		top4_1->initial_mat(m7);
+
+		if (m8.e14 < -70.0f) m8.e14 = 70.0f;
+		if (m9.e14 < -70.0f) m9.e14 = 70.0f;
+		m8.e14 -= (float)yinc2;
+		m9.e14 -= (float)yinc2;
+		top5_1->initial_mat(m8);
+		top5_2->initial_mat(m9);
+
+		double yinc5 = 5.0;
+		if (m10.e14 > 70.0f) m10.e14 = -70.0f;
+		m10.e14 += (float)yinc3;
+		top6_1->initial_mat(m10);
+
+		
+
+
+
+
+		render(); // notify it needs redraw
+		ws_check(); // redraw now
+	} while (m.e24 > 0);
+
+	
+}
+
 void MyViewer::run_animation(){
 	//int a, b, c;
 	//double theta = GS_2PI / 100;
 	if (_animating) return; // avoid recursive calls
 	_animating = true;
 
-	int ind = gs_random(0, rootg()->size() - 1); // pick one child
-	SnManipulator* manip = rootg()->get<SnManipulator>(ind); // access one of the manipulators
-	GsMat m = manip->mat();
+	//int ind = gs_random(0, rootg()->size() - 1); // pick one child
+	//SnManipulator* manip = rootg()->get<SnManipulator>(ind); // access one of the manipulators
+	cartrans = top1_3->mat();
+	GsMat m = top1_3->mat();
 
 
 	double frdt = 1.0/30.0; // delta time to reach given number of frames per second
@@ -1995,11 +1248,12 @@ void MyViewer::run_animation(){
 	do // run for a while:
 	{	while ( t-lt<frdt ) { ws_check(); t=gs_time()-t0; } // wait until it is time for next frame
 		double yinc = (t-lt)*v;
-		if ( t>2 ) yinc=-yinc; // after 2 secs: go down
+		//if ( t>2 ) yinc=-yinc; // after 2 secs: go down
+		if (m.e14 > 65.0f) m.e14 = -65.0f;
 		lt = t;
-		m.e24 += (float)yinc;
-	if ( m.e24<0 ) m.e24=0; // make sure it does not go below 0
-	manip->initial_mat ( m );
+		m.e14 += (float)yinc;
+	//if ( m.e14<0 ) m.e24=0; // make sure it does not go below 0
+	top1_3->initial_mat ( m );
 	render(); // notify it needs redraw
 	ws_check(); // redraw now
 	}	while ( m.e24>0 );
@@ -2234,41 +1488,59 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 		render();
 		return 1;
 	}
-			  //delete later
-	case ' ': {
-		double lt, t0 = gs_time();
-		if (control == false) {
-			do {
-				lt = gs_time() - t0;
-				camera().eye.x += 0.01f;//moves right in x direction
-				//camera().center.x += 0.009f;
 
-				camera().eye.y += 0.01f;//moves right in y direction
-				//camera().center.y += 0.009f;
+	case 'v': {
+		/*do {
+			while ();
+			if ();
+		} while ();
 
-				camera().eye.z += 0.01f;//moves right in z direction
-				//camera().center.z += 0.009f;
+		cartrans = top1_4->mat();
+		xpos = cartrans.e14;
+		xpos += 1.0f;
+		cartrans.e14 = xpos;
+		top1_4->initial_mat(cartrans);
 
-				render();
-				ws_check();
-				//message().setf(“local time=%f”, lt);
-			} while (lt < 3.0f);
-			control = true;
+		if (cartrans.e14 > 66.0f) {
+			cartrans.e14 = -65.0f;
+			top1_4->initial_mat(cartrans);
 		}
-		else {
-			double lt, t0 = gs_time();
-			do {
-				lt = gs_time() - t0;
-				camera().eye.z -= 0.05f;
-				render();
-				ws_check();
-				//message().setf(“local time=%f”, lt);
-			} while (lt < 3.0f);
 
+		cartrans = top1_3->mat();
+		xpos = cartrans.e14;
+		xpos += 1.0f;
+		cartrans.e14 = xpos;
+		top1_3->initial_mat(cartrans);
+
+		if (cartrans.e14 > 66.0f) {
+			cartrans.e14 = -65.0f;
+			top1_3->initial_mat(cartrans);
 		}
-		break;
-		
+
+		cartrans = top1_2->mat();
+		xpos = cartrans.e14;
+		xpos += 1.0f;
+		cartrans.e14 = xpos;
+		top1_2->initial_mat(cartrans);
+
+		if (cartrans.e14 > 66.0f) {
+			cartrans.e14 = -65.0f;
+			top1_2->initial_mat(cartrans);
 		}
+
+		cartrans = top1_1->mat();
+		xpos = cartrans.e14;
+		xpos += 1.0f;
+		cartrans.e14 = xpos;
+		top1_1->initial_mat(cartrans);
+
+		if (cartrans.e14 > 66.0f) {
+			cartrans.e14 = -65.0f;
+			top1_1->initial_mat(cartrans);
+		}
+		render();*/
+		return 1;
+	}
 	}
 	return 0;
 }
@@ -2280,7 +1552,8 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 				switch (e)
 				{
 				case EvNormals: show_normals(_nbut->value()); return 1;
-				case EvAnimate: run_animation(); return 1;
+				//case EvAnimate: run_animation(); return 1;
+				case EvAnimate: animatecars(); return 1;
 				case EvExit: gs_exit();
 				}
 				return WsViewer::uievent(e);
