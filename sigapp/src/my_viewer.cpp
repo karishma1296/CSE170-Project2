@@ -1144,6 +1144,42 @@ void MyViewer::buildenv() {
 	add_model(p, GsVec(0.0f, 0.0f, -65.0f));
 }
 
+void reset() {
+	finc = 65.0f;
+	sinc = 65.0f;
+	SnTransform* t = torso->get<SnTransform>(0);
+	SnTransform* t1 = torso->get<SnTransform>(1);
+	SnTransform* t2 = torso->get<SnTransform>(2);
+	SnTransform* t3 = torso->get<SnTransform>(3);
+	SnTransform* t4 = torso->get<SnTransform>(4);
+	SnTransform* t5 = torso->get<SnTransform>(5);
+	SnTransform* t6 = torso->get<SnTransform>(6);
+
+	GsMat m = t->get();
+	GsMat m1 = t1->get();
+	GsMat m2 = t2->get();
+	GsMat m3 = t3->get();
+	GsMat m4 = t4->get();
+	GsMat m5 = t5->get();
+	GsMat m6 = t6->get();
+
+		m.e34 = finc;
+		t->set(m);
+		m1.e34 = finc;
+		t1->set(m1);
+		m2.e34 = finc;
+		t2->set(m2);
+		m3.e34 = finc;
+		t3->set(m3);
+		m4.e34 = finc;
+		t4->set(m4);
+		m5.e34 = finc;
+		t5->set(m5);
+		m6.e34 = finc;
+		t6->set(m6);
+		
+}
+
 bool contains(GsPnt A, GsPnt B) {
 	return A.x >= B.x - 6 && A.x <= B.x + 6 && A.y >= B.y - 4.45f && A.y <= B.y + 4.45f && A.z >= B.z - 4.5f && A.z <= B.z + 4.5f;
 }
@@ -1177,7 +1213,7 @@ void MyViewer::animatecars() {
 		SnTransform* person = torso->get<SnTransform>(0);
 		GsMat body = person->get();
 
-		double yinc = 1.3;
+		double yinc = 0.7;
 
 		if (m.e14 > 70.0f) m.e14 = -70.0f;
 		if (m2.e14 > 70.0f) m2.e14 = -70.0f;
@@ -1204,7 +1240,7 @@ void MyViewer::animatecars() {
 		m6.e14 -= (float)yinc3;
 		top3_1->initial_mat(m6);
 
-		double yinc4 = 4.0;
+		double yinc4 = 3.3;
 		if (m7.e14 > 70.0f) m7.e14 = -70.0f;
 		m7.e14 += (float)yinc4;
 		top4_1->initial_mat(m7);
@@ -1232,7 +1268,7 @@ void MyViewer::animatecars() {
 		GsPnt A = GsPnt(e14, e24, e34);
 		GsPnt B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m2.e14;
 		c24 = m2.e24;
@@ -1240,7 +1276,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m3.e14;
 		c24 = m3.e24;
@@ -1248,7 +1284,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m4.e14;
 		c24 = m4.e24;
@@ -1256,7 +1292,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m5.e14;
 		c24 = m5.e24;
@@ -1264,7 +1300,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m6.e14;
 		c24 = m6.e24;
@@ -1272,7 +1308,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m7.e14;
 		c24 = m7.e24;
@@ -1280,7 +1316,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m8.e14;
 		c24 = m8.e24;
@@ -1288,7 +1324,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m9.e14;
 		c24 = m9.e24;
@@ -1296,7 +1332,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 		c14 = m10.e14;
 		c24 = m10.e24;
@@ -1304,7 +1340,7 @@ void MyViewer::animatecars() {
 
 		B = GsPnt(c14, c24, c34);
 		if (contains(A, B))
-			gsout << "Doh!" << gsnl;
+			reset();
 
 
 		render(); // notify it needs redraw
@@ -1535,10 +1571,10 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 	case 'f': rightA = true; run_animation(1); break;
 	case 't': leftL = true; rightL = true; run_animation(-1); break;
 	case 'g': leftL = true; rightL = true; run_animation(1); break;
-	case 65361: sinc -= 0.35f; left = true; move2(); break;
-	case 65362: finc -= 0.35f; front = true; move2(); break;
-	case 65364: finc += 0.35f; back = true; move2(); break;
-	case 65363: sinc += 0.35f; right = true; move2(); break;
+	case 65361: sinc -= 0.45f; left = true; move2(); break;
+	case 65362: finc -= 0.45f; front = true; move2(); break;
+	case 65364: finc += 0.45f; back = true; move2(); break;
+	case 65363: sinc += 0.45f; right = true; move2(); break;
 
 		//first person
 		//add later
