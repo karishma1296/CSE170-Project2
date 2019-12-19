@@ -7,6 +7,7 @@
 # include <sig/sn_manipulator.h>
 #include <cmath>
 
+
 # include <sigogl/ws_run.h>
 
 SnGroup* torso = new SnGroup;
@@ -410,7 +411,7 @@ void MyViewer::buildfirstrow(){
 	g.fn = torus.F.size();
 	g.dmap = new GsModel::Texture;
 
-	//g.dmap->fname.set("grass_texture.jpg");
+	g.dmap->fname.set("../space.jpg");
 	torus.M.push().init();					//M - list of materials 
 	torus.M.top() = GsMaterial::DefaultSpecular;
 	int nv = torus.V.size();				// V - list of vertex coordinates 
@@ -435,7 +436,7 @@ void MyViewer::buildfirstrow(){
 			l += 6;
 		}
 	}
-	torus.textured = false;
+	torus.textured = true;
 	torus.set_mode(GsModel::Smooth, GsModel::PerGroupMtl);
 
 	//front wheels
