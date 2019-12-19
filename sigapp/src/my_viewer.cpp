@@ -1142,10 +1142,6 @@ void MyViewer::buildenv() {
 	p->prim().material.diffuse = GsColor::white;
 	add_model(p, GsVec(0.0f, 0.0f, 65.0f));
 	add_model(p, GsVec(0.0f, 0.0f, -65.0f));
-
-	p = new SnPrimitive(GsPrimitive::Box, 66.0f, 30.0f, 0.1f);
-	p->prim().material.diffuse = GsColor::lightblue;
-	add_model(p, GsVec(0.0f, 30.0f, -65.0f));
 }
 
 void reset() {
