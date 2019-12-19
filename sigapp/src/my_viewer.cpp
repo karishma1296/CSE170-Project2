@@ -381,9 +381,28 @@ void MyViewer::build_scene ()
 
 
 	//floor
-	p = new SnPrimitive(GsPrimitive::Box, 65.0f, 0.01f, 65.0f);
+	p = new SnPrimitive(GsPrimitive::Box, 66.0f, 0.01f, 66.0f);
 	p->prim().material.diffuse = GsColor::lightgray;
 	add_model(p, GsVec(0.0f, -0.3f, 1.0f));
+
+	/*SnModel* m = (SnModel*)p;
+	GsModel* mm = m->model();
+
+	GsModel::Group& g = *mm->G.push();
+	g.fi = 0;
+	g.fn = mm->F.size();
+	g.dmap = new GsModel::Texture;
+	g.dmap->fname.set("../street.jpg");
+
+	mm->T.push(GsVec2(-66, -66));
+	mm->T.push(GsVec2(-66, 66));
+	mm->T.push(GsVec2(66, -66));
+	mm->T.push(GsVec2(66, 66));
+
+	mm->M.push().init();
+
+	mm->set_mode(GsModel::Smooth, GsModel::PerGroupMtl);
+	mm->textured = true;*/
 
 	buildfirstrow();
 	buildsecondrow();
@@ -2179,19 +2198,37 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 		render();
 		return 1;
 	}
-			  //up
+			  //foward
 	case 65362: {
 		persontranslation = h_head->mat();
-		yposition = 0.2f;
+		yposition = 0.35f;
 		persontranslation.e34 -= yposition;
 		h_head->initial_mat(persontranslation);
+		GsVec test;
+		GsVec test2;
+		GsBox humanBox = h_head->box();
+		float e14 = persontranslation.e14;
+		float e24 = persontranslation.e24;
+		float e34 = persontranslation.e34;
+		GsBox b13 = top1_3->box();
+		GsPnt A = GsPnt(e14, e24, e34);
+		if (b13.contains(A))
+			gsout << "touched bitch" << gsnl;
+		gsout << A << gsnl;
+	/*	test = b13.size();
+		gsout << test << gsnl;
+
+		test2 = humanBox.size();
+		gsout << test2 << gsnl;
+	if (humanBox.intersects(b13))
+			gsout << "touched bitch!" << gsnl;*/
 		render();
 		return 1;
 	}
-			  //down
+			  //back
 	case 65364: {
 		persontranslation = h_head->mat();
-		yposition = 0.2f;
+		yposition = 0.35f;
 		persontranslation.e34 += yposition;
 		h_head->initial_mat(persontranslation);
 		render();
