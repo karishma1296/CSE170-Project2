@@ -19,10 +19,8 @@ class MyViewer : public WsViewer
 	SnModel* _torus;
 	bool _animating;
 	//postition manipulators for the rows
-	GsMat transm, transm2, transm3, transm4, transm5, transm6, cartrans, cartrans1;
+	GsMat transm, transm2, transm3, transm4, transm5, transm6;
 	GsPnt a, b, c, d;
-	float xpos;
-	float ypos;
 	
    public :
 	MyViewer ( int x, int y, int w, int h, const char* l );
@@ -38,7 +36,6 @@ class MyViewer : public WsViewer
 	void buildfifthrow();
 	void buildsixthrow();
 	void buildenv();
-	void animatecars();
 
 	virtual int handle_keyboard ( const GsEvent &e ) override;
 	virtual int uievent ( int e ) override;
