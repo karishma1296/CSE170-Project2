@@ -1,5 +1,3 @@
-
-//comment
 # include "my_viewer.h"
 
 # include <sigogl/ui_button.h>
@@ -25,7 +23,7 @@ bool norvec = false;
 int control = 1;
 GsModel* mymodel = new GsModel;
 
-//person manip
+/////////////*PERSON MANIP*///////////////////
 SnManipulator* left_leg = new SnManipulator;
 SnManipulator* right_leg = new SnManipulator;
 SnManipulator* right_hand = new SnManipulator;
@@ -35,6 +33,8 @@ SnManipulator* h_neck = new SnManipulator;
 SnManipulator* h_hips = new SnManipulator;
 SnManipulator* h_chest = new SnManipulator;
 
+
+/////////////*CAR MANIPS*///////////////////
 //row_numcar
 //first row of cars
 SnManipulator* top1_1 = new SnManipulator;
@@ -613,7 +613,7 @@ void MyViewer::buildfirstrow(){
 	//top part of car
 	SnPrimitive* tcar_sn1_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn1_2->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(35.0f, 0.0f, 0.0f);
+	transm.setrans(-20.0f, 4.5f, 50.0f);
 	SnGroup* topgroup1_2 = new SnGroup;
 	topgroup1_2->add(tcar_sn1_2);
 	top1_2->child(topgroup1_2);
@@ -669,7 +669,7 @@ void MyViewer::buildfirstrow(){
 	//top part of car
 	SnPrimitive* tcar_sn1_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn1_3->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(35.0f, 0.0f, 0.0f);
+	transm.setrans(15.0f, 4.5f, 50.0f);
 	SnGroup* topgroup1_3 = new SnGroup;
 	topgroup1_3->add(tcar_sn1_3);
 	top1_3->child(topgroup1_3);
@@ -725,7 +725,7 @@ void MyViewer::buildfirstrow(){
 	//top part of car
 	SnPrimitive* tcar_sn1_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn1_4->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(35.0f, 0.0f, 0.0f);
+	transm.setrans(50.0f, 4.5f, 50.0f);
 	SnGroup* topgroup1_4 = new SnGroup;
 	topgroup1_4->add(tcar_sn1_4);
 	top1_4->child(topgroup1_4);
@@ -776,11 +776,12 @@ void MyViewer::buildfirstrow(){
 	backrwheel1_4->child(backrwheelgroup1_4);
 	bottomsng1_4->add(backrwheel1_4);
 	backrwheel1_4->initial_mat(transm);
+
+	rootg()->add(top1_2); rootg()->add(top1_3); rootg()->add(top1_4); //rootg()->add(top2_1);
 	
 	//car hierarchy of row 1 
-	topgroup1_1->add(top1_2);
-	topgroup1_2->add(top1_3);
-	topgroup1_3->add(top1_4);
+
+
 }
 
 void MyViewer::buildsecondrow() {
@@ -844,7 +845,7 @@ void MyViewer::buildsecondrow() {
 	//top part of car
 	SnPrimitive* tcar_sn2_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn2_2->prim().material.diffuse = GsColor::magenta;
-	transm2.setrans(35.0f, 0.0f, 0.0f);
+	transm2.setrans(-20.0f, 4.5f, 35.0f);
 	SnGroup* topgroup2_2 = new SnGroup;
 	topgroup2_2->add(tcar_sn2_2);
 	top2_2->child(topgroup2_2);
@@ -900,7 +901,7 @@ void MyViewer::buildsecondrow() {
 	//top part of car
 	SnPrimitive* tcar_sn2_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn2_3->prim().material.diffuse = GsColor::magenta;
-	transm2.setrans(35.0f, 0.0f, 0.0f);
+	transm2.setrans(15.0f, 4.5f, 35.0f);
 	SnGroup* topgroup2_3 = new SnGroup;
 	topgroup2_3->add(tcar_sn2_3);
 	top2_3->child(topgroup2_3);
@@ -956,11 +957,11 @@ void MyViewer::buildsecondrow() {
 	//top part of car
 	SnPrimitive* tcar_sn2_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn2_4->prim().material.diffuse = GsColor::magenta;
-	transm.setrans(35.0f, 0.0f, 0.0f);
+	transm2.setrans(50.0f, 4.5f, 35.0f);
 	SnGroup* topgroup2_4 = new SnGroup;
 	topgroup2_4->add(tcar_sn2_4);
 	top2_4->child(topgroup2_4);
-	top2_4->initial_mat(transm);
+	top2_4->initial_mat(transm2);
 
 	//body of car
 	SnPrimitive* bcar_sn2_4 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
@@ -1008,9 +1009,7 @@ void MyViewer::buildsecondrow() {
 	bottomsng2_4->add(backrwheel2_4);
 	backrwheel2_4->initial_mat(transm2);
 
-	topgroup2_1->add(top2_2);
-	topgroup2_2->add(top2_3);
-	topgroup2_3->add(top2_4);
+	rootg()->add(top2_2); rootg()->add(top2_3); rootg()->add(top2_4);
 }
 
 void MyViewer::buildthirdrow() {
@@ -1074,7 +1073,7 @@ void MyViewer::buildthirdrow() {
 	//top part of car
 	SnPrimitive* tcar_sn3_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn3_2->prim().material.diffuse = GsColor::magenta;
-	transm3.setrans(35.0f, 0.0f, 0.0f);
+	transm3.setrans(-20.0f, 4.5f, 20.0f);
 	SnGroup* topgroup3_2 = new SnGroup;
 	topgroup3_2->add(tcar_sn3_2);
 	top3_2->child(topgroup3_2);
@@ -1130,7 +1129,7 @@ void MyViewer::buildthirdrow() {
 	//top part of car
 	SnPrimitive* tcar_sn3_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn3_3->prim().material.diffuse = GsColor::magenta;
-	transm3.setrans(35.0f, 0.0f, 0.0f);
+	transm3.setrans(15.0f, 4.5f, 20.0f);
 	SnGroup* topgroup3_3 = new SnGroup;
 	topgroup3_3->add(tcar_sn3_3);
 	top3_3->child(topgroup3_3);
@@ -1186,7 +1185,7 @@ void MyViewer::buildthirdrow() {
 	//top part of car
 	SnPrimitive* tcar_sn3_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn3_4->prim().material.diffuse = GsColor::magenta;
-	transm3.setrans(35.0f, 0.0f, 0.0f);
+	transm3.setrans(50.0f, 4.5f, 20.0f);
 	SnGroup* topgroup3_4 = new SnGroup;
 	topgroup3_4->add(tcar_sn3_4);
 	top3_4->child(topgroup3_4);
@@ -1238,9 +1237,7 @@ void MyViewer::buildthirdrow() {
 	bottomsng3_4->add(backrwheel3_4);
 	backrwheel3_4->initial_mat(transm3);
 
-	topgroup3_1->add(top3_2);
-	topgroup3_2->add(top3_3);
-	topgroup3_3->add(top3_4);
+	rootg()->add(top3_2); rootg()->add(top3_3); rootg()->add(top3_4);
 }
 void MyViewer::buildfourthrow() {
 	SnPrimitive* tcar_sn4_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
@@ -1303,7 +1300,7 @@ void MyViewer::buildfourthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn4_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn4_2->prim().material.diffuse = GsColor::magenta;
-	transm4.setrans(35.0f, 0.0f, 0.0f);
+	transm4.setrans(-20.0f, 4.5f, -15.0f);
 	SnGroup* topgroup4_2 = new SnGroup;
 	topgroup4_2->add(tcar_sn4_2);
 	top4_2->child(topgroup4_2);
@@ -1359,7 +1356,7 @@ void MyViewer::buildfourthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn4_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn4_3->prim().material.diffuse = GsColor::magenta;
-	transm4.setrans(35.0f, 0.0f, 0.0f);
+	transm4.setrans(15.0f, 4.5f, -15.0f);
 	SnGroup* topgroup4_3 = new SnGroup;
 	topgroup4_3->add(tcar_sn4_3);
 	top4_3->child(topgroup4_3);
@@ -1415,7 +1412,7 @@ void MyViewer::buildfourthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn4_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn4_4->prim().material.diffuse = GsColor::magenta;
-	transm4.setrans(35.0f, 0.0f, 0.0f);
+	transm4.setrans(50.0f, 4.5f, -15.0f);
 	SnGroup* topgroup4_4 = new SnGroup;
 	topgroup4_4->add(tcar_sn4_4);
 	top4_4->child(topgroup4_4);
@@ -1466,10 +1463,8 @@ void MyViewer::buildfourthrow() {
 	backrwheel4_4->child(backrwheelgroup4_4);
 	bottomsng4_4->add(backrwheel4_4);
 	backrwheel4_4->initial_mat(transm4);
-
-	topgroup4_1->add(top4_2);
-	topgroup4_2->add(top4_3);
-	topgroup4_3->add(top4_4);
+	
+	rootg()->add(top4_2); rootg()->add(top4_3); rootg()->add(top4_4);
 }
 void MyViewer::buildfifthrow() {
 	SnPrimitive* tcar_sn5_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
@@ -1532,7 +1527,7 @@ void MyViewer::buildfifthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn5_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn5_2->prim().material.diffuse = GsColor::magenta;
-	transm5.setrans(35.0f, 0.0f, 0.0f);
+	transm5.setrans(-20.0f, 4.5f, -30.0f);
 	SnGroup* topgroup5_2 = new SnGroup;
 	topgroup5_2->add(tcar_sn5_2);
 	top5_2->child(topgroup5_2);
@@ -1588,7 +1583,7 @@ void MyViewer::buildfifthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn5_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn5_3->prim().material.diffuse = GsColor::magenta;
-	transm5.setrans(35.0f, 0.0f, 0.0f);
+	transm5.setrans(15.0f, 4.5f, -30.0f);
 	SnGroup* topgroup5_3 = new SnGroup;
 	topgroup5_3->add(tcar_sn5_3);
 	top5_3->child(topgroup5_3);
@@ -1644,7 +1639,7 @@ void MyViewer::buildfifthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn5_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn5_4->prim().material.diffuse = GsColor::magenta;
-	transm5.setrans(35.0f, 0.0f, 0.0f);
+	transm5.setrans(50.0f, 4.5f, -30.0f);
 	SnGroup* topgroup5_4 = new SnGroup;
 	topgroup5_4->add(tcar_sn5_4);
 	top5_4->child(topgroup5_4);
@@ -1696,9 +1691,7 @@ void MyViewer::buildfifthrow() {
 	bottomsng5_4->add(backrwheel5_4);
 	backrwheel5_4->initial_mat(transm5);
 
-	topgroup5_1->add(top5_2);
-	topgroup5_2->add(top5_3);
-	topgroup5_3->add(top5_4);
+	rootg()->add(top5_2); rootg()->add(top5_3); rootg()->add(top5_4);
 }
 void MyViewer::buildsixthrow() {
 	SnPrimitive* tcar_sn6_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
@@ -1761,7 +1754,7 @@ void MyViewer::buildsixthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn6_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn6_2->prim().material.diffuse = GsColor::magenta;
-	transm6.setrans(35.0f, 0.0f, 0.0f);
+	transm6.setrans(-20.0f, 4.5f, -50.0f);
 	SnGroup* topgroup6_2 = new SnGroup;
 	topgroup6_2->add(tcar_sn6_2);
 	top6_2->child(topgroup6_2);
@@ -1817,7 +1810,7 @@ void MyViewer::buildsixthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn6_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn6_3->prim().material.diffuse = GsColor::magenta;
-	transm6.setrans(35.0f, 0.0f, 0.0f);
+	transm6.setrans(15.0f, 4.5f, -50.0f);
 	SnGroup* topgroup6_3 = new SnGroup;
 	topgroup6_3->add(tcar_sn6_3);
 	top6_3->child(topgroup6_3);
@@ -1873,7 +1866,7 @@ void MyViewer::buildsixthrow() {
 	//top part of car
 	SnPrimitive* tcar_sn6_4 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
 	tcar_sn6_4->prim().material.diffuse = GsColor::magenta;
-	transm6.setrans(35.0f, 0.0f, 0.0f);
+	transm6.setrans(50.0f, 4.5f, -50.0f);
 	SnGroup* topgroup6_4 = new SnGroup;
 	topgroup6_4->add(tcar_sn6_4);
 	top6_4->child(topgroup6_4);
@@ -1925,9 +1918,7 @@ void MyViewer::buildsixthrow() {
 	bottomsng6_4->add(backrwheel6_4);
 	backrwheel6_4->initial_mat(transm6);
 
-	topgroup6_1->add(top6_2);
-	topgroup6_2->add(top6_3);
-	topgroup6_3->add(top6_4);
+	rootg()->add(top6_2); rootg()->add(top6_3); rootg()->add(top6_4);
 
 }
 void MyViewer::buildenv() {
@@ -2172,7 +2163,7 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 			//left arrow
 	case 65361: {
 		persontranslation = h_head->mat();//mat is manipulator matrix
-		xposition = 0.1f;
+		xposition = 0.2f;
 		persontranslation.e14 -= xposition;
 		h_head->initial_mat(persontranslation);
 		render();
@@ -2182,7 +2173,7 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 			  //right arrow
 	case 65363: {
 		persontranslation = h_head->mat();
-		xposition = 0.1f;
+		xposition = 0.2f;
 		persontranslation.e14 += xposition;
 		h_head->initial_mat(persontranslation);
 		render();
@@ -2191,8 +2182,8 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 			  //up
 	case 65362: {
 		persontranslation = h_head->mat();
-		yposition = 0.1f;
-		persontranslation.e24 += yposition;
+		yposition = 0.2f;
+		persontranslation.e34 -= yposition;
 		h_head->initial_mat(persontranslation);
 		render();
 		return 1;
@@ -2200,8 +2191,8 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 			  //down
 	case 65364: {
 		persontranslation = h_head->mat();
-		yposition = 0.1f;
-		persontranslation.e24 -= yposition;
+		yposition = 0.2f;
+		persontranslation.e34 += yposition;
 		h_head->initial_mat(persontranslation);
 		render();
 		return 1;
