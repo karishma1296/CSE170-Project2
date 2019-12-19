@@ -14,7 +14,7 @@ class MyViewer : public WsViewer
 	int _torus_n;
 	float _torus_R, _torus_r;
 	GsMat t;
-	GsMat * persontranslation = new GsMat();
+	GsMat persontranslation;
 	int control;
 	SnModel* _torus;
 	bool _animating;
