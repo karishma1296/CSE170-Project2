@@ -54,7 +54,7 @@ class SnManipulator : public SnEditor
    protected :
 	/*! Destructor only accessible through unref() */
 	virtual ~SnManipulator ();
-	GsBox& box() { return _box; }
+	//GsBox& box() { return _box; }
 
    public :
 	/*! Constructor */
@@ -71,6 +71,8 @@ class SnManipulator : public SnEditor
 
 	/*! Get a reference to the manipulator matrix. */
 	GsMat& mat () { return SnEditor::mat(); }
+
+	GsBox& box() { return _box; }
 
 	/*! Set a initial matrix to the manipulator. This matrix will be saved
 		and all manipulations performed will be combined to it. 
