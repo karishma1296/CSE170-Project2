@@ -1189,6 +1189,8 @@ void MyViewer::animatecars() {
 	if (_animating) return; // avoid recursive calls
 	_animating = true;
 
+	camera().eye.y = 120.0f;
+	camera().eye.z = 100.0f;
 	GsMat m = top1_1->mat();
 	GsMat m2 = top1_2->mat();
 	GsMat m3 = top1_3->mat();
@@ -1351,28 +1353,13 @@ void MyViewer::animatecars() {
 
 	
 void MyViewer::firstperson() {
-
 	if (on) {
-		double lt = 0.0;
-		double time = 0.0;
-		double t0 = gs_time();
-		do {
-				
-			lt = gs_time() - t0;
-			camera().eye.y = 15.0f;
-
-			camera().eye.z = 83.0f;
-
-			//look in general distance but look away
-			//camera().center.x = 2.0f;
-
-			//tilt head left
-			//camera().up.x += 0.01f;
+			camera().eye.y = 12.0f;
+			camera().eye.z = 74.0f;
 
 			render();
 			ws_check();
-			message().setf("local time =%f", lt);
-		} while (time < 3.0f);
+			//message().setf("local time =%f", lt);
 	}
 }
 
@@ -1500,7 +1487,6 @@ void MyViewer::move(SnGroup* limb, SnTransform* t, GsMat m, float n) {
 }
 void MyViewer::run_animation(float n)
 {
-	if (_animating) return; // avoid recursive calls
 	_animating = true;
 
 	if (leftL == true && rightL == true) {
@@ -1572,6 +1558,30 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 	case 'f': rightA = true; run_animation(1); break;
 	case 't': leftL = true; rightL = true; run_animation(-1); break;
 	case 'g': leftL = true; rightL = true; run_animation(1); break;
+	case 'z': {
+			camera().eye.z -= 0.3f;
+			render();
+			ws_check();
+			return 0;
+	}
+	case 'x': {
+		camera().eye.z += 0.3f;
+		render();
+		ws_check();
+		return 0;
+	}
+	case 'c': {
+		camera().center.x += 0.3f;
+		render();
+		ws_check();
+		return 0;
+	}
+	case 'v': {
+		camera().center.x -= 0.3f;
+		render();
+		ws_check();
+		return 0;
+	}
 	case 65361: sinc -= 0.45f; left = true; move2(); break;
 	case 65362: finc -= 0.45f; front = true; move2(); break;
 	case 65364: finc += 0.45f; back = true; move2(); break;
