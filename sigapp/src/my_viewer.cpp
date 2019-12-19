@@ -136,6 +136,7 @@ MyViewer::MyViewer ( int x, int y, int w, int h, const char* l ) : WsViewer(x,y,
 	build_scene ();
 	xpos = 0.0f;
 	ypos = 0.0f;
+	on = true;
 }
 
 void MyViewer::build_ui ()
@@ -147,7 +148,8 @@ void MyViewer::build_ui ()
 	{	UiPanel* p=sp;
 		p->add ( _nbut=new UiCheckButton ( "Normals", EvNormals ) ); 
 	}
-	p->add ( new UiButton ( "Animate", EvAnimate ) );
+	p->add(new UiButton("First Person", EvCam));
+	p->add ( new UiButton ( "Let's Play", EvAnimate ) );
 	p->add ( new UiButton ( "Exit", EvExit ) ); p->top()->separate();
 }
 
@@ -292,7 +294,7 @@ void MyViewer::build_scene ()
 
 	//floor
 	p = new SnPrimitive(GsPrimitive::Box, 66.0f, 0.01f, 66.0f);
-	p->prim().material.diffuse = GsColor::lightgray;
+	p->prim().material.diffuse = GsColor::darkgray;
 	add_model(p, GsVec(0.0f, -0.3f, 1.0f));
 
 	/*SnModel* m = (SnModel*)p;
@@ -320,7 +322,7 @@ void MyViewer::build_scene ()
 	buildfourthrow();
 	buildfifthrow();
 	buildsixthrow();
-	//buildenv();
+	buildenv();
 	
 }
 void MyViewer::show_normals(bool view)
@@ -541,7 +543,7 @@ void MyViewer::buildfirstrow(){
 	//second car 
 	//top part of car
 	SnPrimitive* tcar_sn1_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn1_2->prim().material.diffuse = GsColor::magenta;
+	tcar_sn1_2->prim().material.diffuse = GsColor::orange;
 	transm.setrans(0.0f, 4.5f, 50.0f);
 	SnGroup* topgroup1_2 = new SnGroup;
 	topgroup1_2->add(tcar_sn1_2);
@@ -550,7 +552,7 @@ void MyViewer::buildfirstrow(){
 
 	//body of car
 	SnPrimitive* bcar_sn1_2 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn1_2->prim().material.diffuse = GsColor::blue;
+	bcar_sn1_2->prim().material.diffuse = GsColor::cyan;
 	transm.setrans(0.0f, -2.0f, 0.0f);
 	SnGroup* bottomsng1_2 = new SnGroup;
 	bottomsng1_2->add(bcar_sn1_2);
@@ -597,7 +599,7 @@ void MyViewer::buildfirstrow(){
 	//third car 
 	//top part of car
 	SnPrimitive* tcar_sn1_3 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn1_3->prim().material.diffuse = GsColor::magenta;
+	tcar_sn1_3->prim().material.diffuse = GsColor::green;
 	transm.setrans(45.0f, 4.5f, 50.0f);
 	SnGroup* topgroup1_3 = new SnGroup;
 	topgroup1_3->add(tcar_sn1_3);
@@ -606,7 +608,7 @@ void MyViewer::buildfirstrow(){
 
 	//body of car
 	SnPrimitive* bcar_sn1_3 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn1_3->prim().material.diffuse = GsColor::blue;
+	bcar_sn1_3->prim().material.diffuse = GsColor::red;
 	transm.setrans(0.0f, -2.0f, 0.0f);
 	SnGroup* bottomsng1_3 = new SnGroup;
 	bottomsng1_3->add(bcar_sn1_3);
@@ -655,8 +657,8 @@ void MyViewer::buildfirstrow(){
 
 void MyViewer::buildsecondrow() {
 	SnPrimitive* tcar_sn2_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn2_1->prim().material.diffuse = GsColor::magenta;
-	transm2.setrans(-30.0f, 4.5f, 35.0f);
+	tcar_sn2_1->prim().material.diffuse = GsColor::cyan;
+	transm2.setrans(-30.0f, 4.5f, 32.0f);
 	SnGroup* topgroup2_1 = new SnGroup;
 	topgroup2_1->add(tcar_sn2_1);
 	top2_1->child(topgroup2_1);
@@ -664,7 +666,7 @@ void MyViewer::buildsecondrow() {
 
 	//body of car
 	SnPrimitive* bcar_sn2_1 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn2_1->prim().material.diffuse = GsColor::blue;
+	bcar_sn2_1->prim().material.diffuse = GsColor::orange;
 	transm2.setrans(0.0f, -2.0f, 0.0f);
 	SnGroup* bottomsng2_1 = new SnGroup;
 	bottomsng2_1->add(bcar_sn2_1);
@@ -712,8 +714,8 @@ void MyViewer::buildsecondrow() {
 	//second car 
 	//top part of car
 	SnPrimitive* tcar_sn2_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn2_2->prim().material.diffuse = GsColor::magenta;
-	transm2.setrans(30.0f, 4.5f, 35.0f);
+	tcar_sn2_2->prim().material.diffuse = GsColor::orange;
+	transm2.setrans(30.0f, 4.5f, 32.0f);
 	SnGroup* topgroup2_2 = new SnGroup;
 	topgroup2_2->add(tcar_sn2_2);
 	top2_2->child(topgroup2_2);
@@ -721,7 +723,7 @@ void MyViewer::buildsecondrow() {
 
 	//body of car
 	SnPrimitive* bcar_sn2_2 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn2_2->prim().material.diffuse = GsColor::blue;
+	bcar_sn2_2->prim().material.diffuse = GsColor::yellow;
 	transm2.setrans(0.0f, -2.0f, 0.0f);
 	SnGroup* bottomsng2_2 = new SnGroup;
 	bottomsng2_2->add(bcar_sn2_2);
@@ -770,8 +772,8 @@ void MyViewer::buildsecondrow() {
 
 void MyViewer::buildthirdrow() {
 	SnPrimitive* tcar_sn3_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn3_1->prim().material.diffuse = GsColor::magenta;
-	transm3.setrans(-55.0f, 4.5f, 20.0f);
+	tcar_sn3_1->prim().material.diffuse = GsColor::green;
+	transm3.setrans(-55.0f, 4.5f, 15.0f);
 	SnGroup* topgroup3_1 = new SnGroup;
 	topgroup3_1->add(tcar_sn3_1);
 	top3_1->child(topgroup3_1);
@@ -780,7 +782,7 @@ void MyViewer::buildthirdrow() {
 
 	//body of car
 	SnPrimitive* bcar_sn3_1 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn3_1->prim().material.diffuse = GsColor::blue;
+	bcar_sn3_1->prim().material.diffuse = GsColor::lightblue;
 	transm3.setrans(0.0f, -2.0f, 0.0f);
 	SnGroup* bottomsng3_1 = new SnGroup;
 	bottomsng3_1->add(bcar_sn3_1);
@@ -828,8 +830,8 @@ void MyViewer::buildthirdrow() {
 }
 void MyViewer::buildfourthrow() {
 	SnPrimitive* tcar_sn4_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn4_1->prim().material.diffuse = GsColor::magenta;
-	transm4.setrans(-55.0f, 4.5f, -15.0f);
+	tcar_sn4_1->prim().material.diffuse = GsColor::lightblue;
+	transm4.setrans(-55.0f, 4.5f, -10.0f);
 	SnGroup* topgroup4_1 = new SnGroup;
 	topgroup4_1->add(tcar_sn4_1);
 	top4_1->child(topgroup4_1);
@@ -886,7 +888,7 @@ void MyViewer::buildfourthrow() {
 }
 void MyViewer::buildfifthrow() {
 	SnPrimitive* tcar_sn5_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn5_1->prim().material.diffuse = GsColor::magenta;
+	tcar_sn5_1->prim().material.diffuse = GsColor::yellow;
 	transm5.setrans(-55.0f, 4.5f, -30.0f);
 	SnGroup* topgroup5_1 = new SnGroup;
 	topgroup5_1->add(tcar_sn5_1);
@@ -895,7 +897,7 @@ void MyViewer::buildfifthrow() {
 
 	//body of car
 	SnPrimitive* bcar_sn5_1 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn5_1->prim().material.diffuse = GsColor::blue;
+	bcar_sn5_1->prim().material.diffuse = GsColor::magenta;
 	transm5.setrans(0.0f, -2.0f, 0.0f);
 	SnGroup* bottomsng5_1 = new SnGroup;
 	bottomsng5_1->add(bcar_sn5_1);
@@ -943,7 +945,7 @@ void MyViewer::buildfifthrow() {
 	//second car 
 	//top part of car
 	SnPrimitive* tcar_sn5_2 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn5_2->prim().material.diffuse = GsColor::magenta;
+	tcar_sn5_2->prim().material.diffuse = GsColor::green;
 	transm5.setrans(10.0f, 4.5f, -30.0f);
 	SnGroup* topgroup5_2 = new SnGroup;
 	topgroup5_2->add(tcar_sn5_2);
@@ -952,7 +954,7 @@ void MyViewer::buildfifthrow() {
 
 	//body of car
 	SnPrimitive* bcar_sn5_2 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn5_2->prim().material.diffuse = GsColor::blue;
+	bcar_sn5_2->prim().material.diffuse = GsColor::darkgreen;
 	transm5.setrans(0.0f, -2.0f, 0.0f);
 	SnGroup* bottomsng5_2 = new SnGroup;
 	bottomsng5_2->add(bcar_sn5_2);
@@ -1001,7 +1003,7 @@ void MyViewer::buildfifthrow() {
 }
 void MyViewer::buildsixthrow() {
 	SnPrimitive* tcar_sn6_1 = new SnPrimitive(GsPrimitive::Box, 3.6f, 2.1f, 4.45f);
-	tcar_sn6_1->prim().material.diffuse = GsColor::magenta;
+	tcar_sn6_1->prim().material.diffuse = GsColor::red;
 	transm6.setrans(-55.0f, 4.5f, -50.0f);
 	SnGroup* topgroup6_1 = new SnGroup;
 	topgroup6_1->add(tcar_sn6_1);
@@ -1011,7 +1013,7 @@ void MyViewer::buildsixthrow() {
 
 	//body of car
 	SnPrimitive* bcar_sn6_1 = new SnPrimitive(GsPrimitive::Box, 6.0f, 1.5f, 4.5f);
-	bcar_sn6_1->prim().material.diffuse = GsColor::blue;
+	bcar_sn6_1->prim().material.diffuse = GsColor::lightblue;
 	transm6.setrans(0.0f, -2.0f, 0.0f);
 	SnGroup* bottomsng6_1 = new SnGroup;
 	bottomsng6_1->add(bcar_sn6_1);
@@ -1116,43 +1118,101 @@ void MyViewer::buildsixthrow() {
 }
 void MyViewer::buildenv() {
 	SnPrimitive* p;
-	p = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 1.0f, 0.2f);
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
 	p->prim().material.diffuse = GsColor::darkgreen;
-	add_model(p, GsVec(-5.0f, 2.8f, -7.0f));
-	p = new SnPrimitive(GsPrimitive::Cylinder, 0.1f, 0.1f, 1.6f);
+	add_model(p, GsVec(-60.0f, 15.0f, -65.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 10.0f);
 	p->prim().material.diffuse = GsColor::brown;
-	add_model(p, GsVec(-5.0f, 0.9f, -7.0f));
+	add_model(p, GsVec(-60.0f, 10.0f, -65.0f));
 
-	p = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.8f, 0.2f);
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
 	p->prim().material.diffuse = GsColor::green;
-	add_model(p, GsVec(-4.1f, 2.5f, -6.4f));
-	p = new SnPrimitive(GsPrimitive::Cylinder, 0.1f, 0.1f, 1.4f);
+	add_model(p, GsVec(-50.0f, 17.0f, -60.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 10.0f);
 	p->prim().material.diffuse = GsColor::brown;
-	add_model(p, GsVec(-4.1f, 0.7f, -6.4f));
+	add_model(p, GsVec(-50.0f, 7.0f, -60.0f));
 
-	p = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.8f, 0.2f);
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
 	p->prim().material.diffuse = GsColor::darkgreen;
-	add_model(p, GsVec(-3.1f, 2.7f, -7.0f));
-	p = new SnPrimitive(GsPrimitive::Cylinder, 0.1f, 0.1f, 1.6f);
+	add_model(p, GsVec(-40.0f, 17.0f, -65.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 10.0f);
 	p->prim().material.diffuse = GsColor::brown;
-	add_model(p, GsVec(-3.1f, 0.9f, -7.0f));
+	add_model(p, GsVec(-40.0f, 7.0f, -65.0f));
 
-	p = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.8f, 0.2f);
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
 	p->prim().material.diffuse = GsColor::green;
-	add_model(p, GsVec(-3.1f, 2.5f, -6.4f));
-	p = new SnPrimitive(GsPrimitive::Cylinder, 0.1f, 0.1f, 1.4f);
+	add_model(p, GsVec(-30.0f, 14.0f, -62.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 7.0f);
 	p->prim().material.diffuse = GsColor::brown;
-	add_model(p, GsVec(-3.1f, 0.7f, -6.4f));
+	add_model(p, GsVec(-30.0f, 7.0f, -62.0f));
 
-	p = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.8f, 0.2f);
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
 	p->prim().material.diffuse = GsColor::darkgreen;
-	add_model(p, GsVec(-2.1f, 2.7f, -7.0f));
-	p = new SnPrimitive(GsPrimitive::Cylinder, 0.1f, 0.1f, 1.6f);
+	add_model(p, GsVec(-20.0f, 19.0f, -64.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 9.0f);
 	p->prim().material.diffuse = GsColor::brown;
-	add_model(p, GsVec(-2.1f, 0.9f, -7.0f));
+	add_model(p, GsVec(-20.0f, 8.0f, -64.0f));
+
+
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
+	p->prim().material.diffuse = GsColor::darkgreen;
+	add_model(p, GsVec(60.0f, 15.0f, -65.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 10.0f);
+	p->prim().material.diffuse = GsColor::brown;
+	add_model(p, GsVec(60.0f, 10.0f, -65.0f));
+
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
+	p->prim().material.diffuse = GsColor::green;
+	add_model(p, GsVec(50.0f, 17.0f, -60.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 10.0f);
+	p->prim().material.diffuse = GsColor::brown;
+	add_model(p, GsVec(50.0f, 7.0f, -60.0f));
+
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
+	p->prim().material.diffuse = GsColor::darkgreen;
+	add_model(p, GsVec(40.0f, 17.0f, -65.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 10.0f);
+	p->prim().material.diffuse = GsColor::brown;
+	add_model(p, GsVec(40.0f, 7.0f, -65.0f));
+
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
+	p->prim().material.diffuse = GsColor::green;
+	add_model(p, GsVec(30.0f, 14.0f, -62.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 7.0f);
+	p->prim().material.diffuse = GsColor::brown;
+	add_model(p, GsVec(30.0f, 7.0f, -62.0f));
+
+	p = new SnPrimitive(GsPrimitive::Capsule, 1.0f, 8.0f, 1.0f);
+	p->prim().material.diffuse = GsColor::darkgreen;
+	add_model(p, GsVec(20.0f, 19.0f, -64.0f));
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.5f, 0.5f, 9.0f);
+	p->prim().material.diffuse = GsColor::brown;
+	add_model(p, GsVec(20.0f, 8.0f, -64.0f));
+
+	//floor
+	p = new SnPrimitive(GsPrimitive::Box, 10.0f, 0.2f, 1.5f);
+	p->prim().material.diffuse = GsColor::white;
+	add_model(p, GsVec(0.0f, 0.0f, 42.0f));
+	add_model(p,GsVec(45.0f, 0.0f, 42.0f));
+	add_model(p, GsVec(-45.0f, 0.0f, 42.0f));
+	add_model(p, GsVec(-45.0f, 0.0f, 25.0f));
+	add_model(p, GsVec(45.0f, 0.0f, 25.0f));
+	add_model(p, GsVec(0.0f, 0.0f, 25.0f));
+	add_model(p, GsVec(0.0f, 0.0f, -20.0f));
+	add_model(p, GsVec(45.0f, 0.0f, -20.0f));
+	add_model(p, GsVec(-45.0f, 0.0f, -20.0f));
+	add_model(p, GsVec(0.0f, 0.0f, -40.0f));
+	add_model(p, GsVec(45.0f, 0.0f, -40.0f));
+	add_model(p, GsVec(-45.0f, 0.0f, -40.0f));
+
+	p = new SnPrimitive(GsPrimitive::Box, 66.0f, 0.2f, 5.1f);
+	p->prim().material.diffuse = GsColor::white;
+	add_model(p, GsVec(0.0f, 0.0f, 65.0f));
+	add_model(p, GsVec(0.0f, 0.0f, -65.0f));
 }
 
-void MyViewer::animatecars(){
+
+void MyViewer::animatecars() {
 	if (_animating) return; // avoid recursive calls
 	_animating = true;
 
@@ -1188,7 +1248,7 @@ void MyViewer::animatecars(){
 
 		//second row
 		double yinc2 = 0.9;
-		
+
 		if (m4.e14 < -70.0f) m4.e14 = 70.0f;
 		if (m5.e14 < -70.0f) m5.e14 = 70.0f;
 		m4.e14 -= (float)yinc2;
@@ -1218,48 +1278,39 @@ void MyViewer::animatecars(){
 		m10.e14 += (float)yinc3;
 		top6_1->initial_mat(m10);
 
-		
-
-
-
-
 		render(); // notify it needs redraw
 		ws_check(); // redraw now
 	} while (m.e24 > 0);
+}
 
 	
+void MyViewer::firstperson() {
+
+	if (on) {
+		double lt = 0.0;
+		double time = 0.0;
+		double t0 = gs_time();
+		do {
+				
+			lt = gs_time() - t0;
+			camera().eye.y = 15.0f;
+
+			camera().eye.z = 83.0f;
+
+			//look in general distance but look away
+			//camera().center.x = 2.0f;
+
+			//tilt head left
+			//camera().up.x += 0.01f;
+
+			render();
+			ws_check();
+			message().setf("local time =%f", lt);
+		} while (time < 3.0f);
+	}
 }
+	
 
-void MyViewer::run_animation(){
-	//int a, b, c;
-	//double theta = GS_2PI / 100;
-	if (_animating) return; // avoid recursive calls
-	_animating = true;
-
-	//int ind = gs_random(0, rootg()->size() - 1); // pick one child
-	//SnManipulator* manip = rootg()->get<SnManipulator>(ind); // access one of the manipulators
-	cartrans = top1_3->mat();
-	GsMat m = top1_3->mat();
-
-
-	double frdt = 1.0/30.0; // delta time to reach given number of frames per second
-	double v = 4; // target velocity is 1 unit per second
-	double t=0, lt=0, t0=gs_time();
-	do // run for a while:
-	{	while ( t-lt<frdt ) { ws_check(); t=gs_time()-t0; } // wait until it is time for next frame
-		double yinc = (t-lt)*v;
-		//if ( t>2 ) yinc=-yinc; // after 2 secs: go down
-		if (m.e14 > 65.0f) m.e14 = -65.0f;
-		lt = t;
-		m.e14 += (float)yinc;
-	//if ( m.e14<0 ) m.e24=0; // make sure it does not go below 0
-	top1_3->initial_mat ( m );
-	render(); // notify it needs redraw
-	ws_check(); // redraw now
-	}	while ( m.e24>0 );
-	_animating = false;
-
-}
 int MyViewer::handle_keyboard(const GsEvent& e) {
 	int ret = WsViewer::handle_keyboard(e); // 1st let system check events
 	if (ret) return ret;
@@ -1269,167 +1320,21 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 	case GsEvent::KeyEsc: gs_exit(); return 1;
 	case 'n': { bool b = !_nbut->value(); _nbut->value(b); show_normals(b); return 1; }
 			//default: gsout << "Key pressed: " << e.key << gsnl;
+//first person 
+	case 'w': {
+		camera().eye.y -= 0.9f;
+		render();
+		ws_check();
+		return 1;
 
+	}
+	case 's': {
+
+	}
 	case 'a': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);//puttin it to origin
-		GsMat rotation;//rotation matrix
-		righthand +=10* ((float)GS_2PI / 360);//angle of rotation
-		//gsout << righthand ;
-		rotation.rotx(righthand);//doing rotation on righthand
-		GsMat currentMatrix = right_hand->mat();//get reference manipulator matrix
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24) - 0.005f,currentMatrix.e34 - 0.005f };
-		//GsVec points = { currentMatrix.e14,(currentMatrix.e24),currentMatrix.e34 };
-		//GsMat test;
-		//test.translation(-points);
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		//GsMat FinalTransform = NewTranslation * rotation *test* OriginMat;
-		right_hand->initial_mat(FinalTransform);//doing transformation on hand
-		render();
-		return 1;
-	}
-	case 'b': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);//putting it to origin
-		GsMat rotation;//rotation matrix
-		righthand -= 10*((float)GS_2PI / 360);//angle of rotation
-		rotation.rotx(righthand);//doing rotation on righthand
-		GsMat currentMatrix = right_hand->mat();//get reference manipulator matrix
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24)
-			+ 0.001f,currentMatrix.e34 + 0.001f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		//NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		right_hand->initial_mat(FinalTransform);//doing transformation on hand
-		render();
-		return 1;
-	}
-	case 'c': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);
-		GsMat rotation;//rotation matrix
-		lefthand += ((float)GS_2PI / 360);//angle of rotation
-		rotation.rotx(lefthand);
-		GsMat currentMatrix = left_hand->mat();
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24) - 0.01f,currentMatrix.e34 - 0.01f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		left_hand->initial_mat(FinalTransform);
-		render();
-		return 1;
 
 	}
 	case 'd': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);
-		GsMat rotation;//rotation matrix
-		lefthand -= ((float)GS_2PI / 360);//angle of rotation
-		rotation.rotx(lefthand);
-		GsMat currentMatrix = left_hand->mat();
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24)
-			+ 0.001f,currentMatrix.e34 + 0.001f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		left_hand->initial_mat(FinalTransform);
-		render();
-		return 1;
-
-	}
-	case 'e': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);
-		GsMat rotation;//rotation matrix
-		leftleg += ((float)GS_2PI / 360);//angle of rotation
-		rotation.rotx(leftleg);
-		GsMat currentMatrix = left_leg->mat();
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24) - 0.001f,currentMatrix.e34 - 0.001f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		left_leg->initial_mat(FinalTransform);
-		render();
-		return 1;
-	}
-	case 'f': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);
-		GsMat rotation;//rotation matrix
-		leftleg -= ((float)GS_2PI / 360);//angle of rotation
-		rotation.rotx(leftleg);
-		GsMat currentMatrix = left_leg->mat();
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24) - 0.001f,currentMatrix.e34 - 0.001f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		left_leg->initial_mat(FinalTransform);
-		render();
-		return 1;
-	}
-	case 'g': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);
-		GsMat rotation;//rotation matrix
-		rightleg += 10*((float)GS_2PI / 360);//angle of rotation
-		rotation.rotx(rightleg);
-		GsMat currentMatrix = right_leg->mat();
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24) - 0.001f,currentMatrix.e34 - 0.001f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		right_leg->initial_mat(FinalTransform);
-		render();
-		return 1;
-	}
-	case 'h': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);
-		GsMat rotation;//rotation matrix
-		rightleg -= ((float)GS_2PI / 360);//angle of rotation
-		rotation.rotx(rightleg);
-		GsMat currentMatrix = right_leg->mat();
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24) + 0.001f,currentMatrix.e34 + 0.001f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		right_leg->initial_mat(FinalTransform);
-		render();
-		return 1;
-	}
-	case 'i': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);
-		GsMat rotation;//rotation matrix
-		righthand += ((float)GS_2PI / 360);//angle of rotation
-		rotation.rotz(righthand);
-		GsMat currentMatrix = right_hand->mat();
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24) - 0.001f,currentMatrix.e34 - 0.001f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		right_hand->initial_mat(FinalTransform);
-		render();
-		return 1;
-
-	}
-	case 'j': {
-		GsMat OriginMat;
-		OriginMat.translation(0, 0, 0);
-		GsMat rotation;//rotation matrix
-		righthand -= ((float)GS_2PI / 360);//angle of rotation
-		rotation.rotz(righthand);
-		GsMat currentMatrix = right_hand->mat();
-		GsVec points = { currentMatrix.e14,(currentMatrix.e24) + 0.001f,currentMatrix.e34 + 0.001f };
-		GsMat NewTranslation;
-		NewTranslation.translation(points);
-		GsMat FinalTransform = NewTranslation * rotation * OriginMat;
-		right_hand->initial_mat(FinalTransform);
-		render();
-		return 1;
 
 	}
 			//global movement
@@ -1489,58 +1394,6 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 		return 1;
 	}
 
-	case 'v': {
-		/*do {
-			while ();
-			if ();
-		} while ();
-
-		cartrans = top1_4->mat();
-		xpos = cartrans.e14;
-		xpos += 1.0f;
-		cartrans.e14 = xpos;
-		top1_4->initial_mat(cartrans);
-
-		if (cartrans.e14 > 66.0f) {
-			cartrans.e14 = -65.0f;
-			top1_4->initial_mat(cartrans);
-		}
-
-		cartrans = top1_3->mat();
-		xpos = cartrans.e14;
-		xpos += 1.0f;
-		cartrans.e14 = xpos;
-		top1_3->initial_mat(cartrans);
-
-		if (cartrans.e14 > 66.0f) {
-			cartrans.e14 = -65.0f;
-			top1_3->initial_mat(cartrans);
-		}
-
-		cartrans = top1_2->mat();
-		xpos = cartrans.e14;
-		xpos += 1.0f;
-		cartrans.e14 = xpos;
-		top1_2->initial_mat(cartrans);
-
-		if (cartrans.e14 > 66.0f) {
-			cartrans.e14 = -65.0f;
-			top1_2->initial_mat(cartrans);
-		}
-
-		cartrans = top1_1->mat();
-		xpos = cartrans.e14;
-		xpos += 1.0f;
-		cartrans.e14 = xpos;
-		top1_1->initial_mat(cartrans);
-
-		if (cartrans.e14 > 66.0f) {
-			cartrans.e14 = -65.0f;
-			top1_1->initial_mat(cartrans);
-		}
-		render();*/
-		return 1;
-	}
 	}
 	return 0;
 }
@@ -1552,8 +1405,8 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 				switch (e)
 				{
 				case EvNormals: show_normals(_nbut->value()); return 1;
-				//case EvAnimate: run_animation(); return 1;
 				case EvAnimate: animatecars(); return 1;
+				case EvCam: firstperson(); return 1;
 				case EvExit: gs_exit();
 				}
 				return WsViewer::uievent(e);

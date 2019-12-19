@@ -9,7 +9,7 @@
 // Viewer for this example:
 class MyViewer : public WsViewer
 {  protected :
-	enum MenuEv { EvNormals, EvAnimate, EvExit };
+	enum MenuEv { EvNormals, EvAnimate, EvExit, EvCam };
 	UiCheckButton* _nbut;
 	int _torus_n;
 	float _torus_R, _torus_r;
@@ -23,6 +23,7 @@ class MyViewer : public WsViewer
 	GsPnt a, b, c, d;
 	float xpos;
 	float ypos;
+	bool on;
 	
    public :
 	MyViewer ( int x, int y, int w, int h, const char* l );
@@ -30,7 +31,6 @@ class MyViewer : public WsViewer
 	void add_model ( SnShape* s, GsVec p );
 	void build_scene ();
 	void show_normals ( bool view );
-	void run_animation ();
 	void buildfirstrow();
 	void buildsecondrow();
 	void buildthirdrow();
@@ -39,6 +39,8 @@ class MyViewer : public WsViewer
 	void buildsixthrow();
 	void buildenv();
 	void animatecars();
+	void firstperson();
+
 
 	virtual int handle_keyboard ( const GsEvent &e ) override;
 	virtual int uievent ( int e ) override;
