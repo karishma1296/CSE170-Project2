@@ -40,7 +40,9 @@ class MyViewer : public WsViewer
 	void buildenv();
 	void animatecars();
 	void firstperson();
-
+	void move(SnGroup* limb, SnTransform* t, GsMat m, float n);
+	void move2();
+	void run_animation(float n);
 
 	virtual int handle_keyboard ( const GsEvent &e ) override;
 	virtual int uievent ( int e ) override;

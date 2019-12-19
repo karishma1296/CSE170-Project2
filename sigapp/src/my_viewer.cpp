@@ -9,29 +9,15 @@
 
 # include <sigogl/ws_run.h>
 
-float righthand;
-float lefthand;
-float leftleg;
-float rightleg;
-float rad = 2; 
-float bigradius = 0;
-float resolution = 10;
-bool redraw1 = false;
-float hhead;
-bool flatshading = false;
-bool norvec = false;
+SnGroup* torso = new SnGroup;
+int count = 0;
 int control = 1;
 GsModel* mymodel = new GsModel;
-
-/////////////*PERSON MANIP*///////////////////
-SnManipulator* left_leg = new SnManipulator;
-SnManipulator* right_leg = new SnManipulator;
-SnManipulator* right_hand = new SnManipulator;
-SnManipulator* left_hand = new SnManipulator;
-SnManipulator* h_head = new SnManipulator;
-SnManipulator* h_neck = new SnManipulator;
-SnManipulator* h_hips = new SnManipulator;
-SnManipulator* h_chest = new SnManipulator;
+bool leftL = false; bool rightL = false; bool leftA = false; bool rightA = false;
+bool front = false; bool back = false; bool left = false; bool right = false;
+bool step = true; bool side = false; bool mode = false;
+float finc = 0.0f;
+float sinc = 0.0f;
 
 
 /////////////*CAR MANIPS*///////////////////
@@ -137,6 +123,7 @@ MyViewer::MyViewer ( int x, int y, int w, int h, const char* l ) : WsViewer(x,y,
 	xpos = 0.0f;
 	ypos = 0.0f;
 	on = true;
+	_animating = false;
 }
 
 void MyViewer::build_ui ()
@@ -153,7 +140,7 @@ void MyViewer::build_ui ()
 	p->add ( new UiButton ( "Exit", EvExit ) ); p->top()->separate();
 }
 
-void MyViewer::add_model ( SnShape* s, GsVec p )
+void MyViewer::add_model(SnShape* s, GsVec p)
 {
 	// This method demonstrates how to add some elements to our scene graph: lines,
 	// and a shape, and all in a group under a SnManipulator.
@@ -163,135 +150,80 @@ void MyViewer::add_model ( SnShape* s, GsVec p )
 	// You would then add the transform as 1st element of the group, and set g->separator(true).
 	// Your scene graph should always be carefully designed according to your application needs.
 
-
-	SnManipulator* manip = new SnManipulator;
-	GsMat m;
-	m.translation ( p );
-	manip->initial_mat ( m );
-
-
+	SnTransform* transform = new SnTransform;
 	SnGroup* g = new SnGroup;
 	SnLines* l = new SnLines;
-	l->color(GsColor::orange);
+	GsMat matrix;
+
+	matrix.translation(p);
+	//if (count == 3) {
+	//	matrix.rotx(0, 1);
+	//	matrix.setrans(-20, 15, 20);
+	//}
+	//if (count == 6) {
+	//	matrix.rotx(1, 0);
+	//	matrix.setrans(-30, 25, -30);
+	//}
+	if (count < 7) {
+		torso->add(transform);
+		//torso->add(s);
+	}
+	transform->set(matrix);
+	g->add(transform);
+	g->separator(true);
 	g->add(s);
 	g->add(l);
-	manip->child(g);
+
+	// manip->visible(false); // call this to turn off mouse interaction
+	count++;
+	rootg()->add(g);
+
+	////add later
+	//SnManipulator* manip = new SnManipulator;
+	//GsMat m;
+	//m.translation ( p );
+	//manip->initial_mat ( m );
+
 	// manip->visible(false); // call this to turn off mouse interaction
 
-
-	rootg()->add(manip);
+	//rootg()->add(manip);
 }
 
 void MyViewer::build_scene ()
 {
 	SnPrimitive* p;
-	GsModel* mymodel = new GsModel;
+
+	// alien body construction
+	p = new SnPrimitive(GsPrimitive::Ellipsoid, 2.0, 0.5);
+	p->prim().material.diffuse = GsColor::darkgreen;
+	add_model(p, GsVec(0, 3, 0));
+
+	p = new SnPrimitive(GsPrimitive::Cylinder, 0.25, 0.25, 0.5);
+	p->prim().material.diffuse = GsColor::blue;
+	add_model(p, GsVec(0, 4, 0));
+
+	p = new SnPrimitive(GsPrimitive::Sphere, 1);
+	p->prim().material.diffuse = GsColor::darkgreen;
+	add_model(p, GsVec(0, 5.5f, 0));
+
+	//legs
+	p = new SnPrimitive(GsPrimitive::Capsule, .25, .25, 1);
+	p->prim().material.diffuse = GsColor::blue;
+	add_model(p, GsVec(-0.5f, 1.0f, 0));
+
+	p = new SnPrimitive(GsPrimitive::Capsule, .25, .25, 1);
+	p->prim().material.diffuse = GsColor::blue;
+	add_model(p, GsVec(0.5f, 1.0f, 0));
+
+	//arms
+	p = new SnPrimitive(GsPrimitive::Capsule, .25, .25, 1);
+	p->prim().material.diffuse = GsColor::blue;
+	add_model(p, GsVec(-1, 3.0f, 0));
+
+	p = new SnPrimitive(GsPrimitive::Capsule, .25, .25, 1);
+	p->prim().material.diffuse = GsColor::blue;
+	add_model(p, GsVec(1, 3.0f, 0));
 	
-	SnGroup* person = new SnGroup;//pointer person to SnGroup
-	//person->separator(true);
-	//his head
-	SnPrimitive* hhead = new SnPrimitive(GsPrimitive::Sphere, 1.3f);
-	hhead->prim().material.diffuse = GsColor::lightgray;
-	t.setrans(0, 6.4f, 60);
-	
-	SnGroup* _hhead = new SnGroup;
-	//_hhead->seperator(true);
-	_hhead->add(hhead);//adding primitive into SnGroup
-	h_head->child(_hhead);//into manipulator
-	person->add(h_head);
-	h_head->initial_mat(t);//setting a new matrix to the manipulator
-	rootg()->add(h_head);
-	
-	//neck
-	SnPrimitive* hneck = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.2f, 0.4f);
-	hneck->prim().material.diffuse = GsColor::gray;
-	t.setrans(0, -1.5f, 0.3f);
-
-
-	SnGroup* _hneck = new SnGroup;
-	_hneck->separator(true);
-	_hneck->add(hneck);
-	h_neck->child(_hneck);
-	_hhead->add(h_neck);
-	h_neck->initial_mat(t);
-
-	//chest
-	SnPrimitive* hchest= new SnPrimitive(GsPrimitive::Box, 1.0f, 1.0f, 0.5);
-	hchest->prim().material.diffuse = GsColor::orange;
-	t.setrans(0, -1.0f, -0.3f);
-
-	SnGroup* _hchest = new SnGroup;
-	_hchest->separator(true);
-	_hchest->add(hchest);
-	h_chest->child(_hchest);
-	_hneck->add(h_chest);
-	h_chest->initial_mat(t);
-
-	//hips
-	SnPrimitive* hhips = new SnPrimitive(GsPrimitive::Box, 0.7f, 0.7f, 0.5f);
-	hhips->prim().material.diffuse = GsColor::blue;
-	t.setrans(0, -1.7f, 0.0);
-
-
-	SnGroup* _hhips = new SnGroup;
-	_hhips->separator(true);
-	_hhips->add(hhips);
-	h_hips->child(_hhips);
-	_hchest->add(h_hips);
-	h_hips->initial_mat(t);
-
-
-	//left leg
-	SnPrimitive* leftleg = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.2f, 1.0f);
-	leftleg->prim().material.diffuse = GsColor::darkgreen;
-	t.setrans(-0.5f, -1.0f, 0.0f);
-
-	SnGroup* _leftleg = new SnGroup;
-	_leftleg->separator(true);
-	_leftleg->add(leftleg);
-	left_leg->child(_leftleg); 
-	_hhips->add(left_leg);
-	left_leg->initial_mat(t);
-
-
-	//right leg
-	SnPrimitive* rightleg = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.2f, 1.0f);
-	rightleg->prim().material.diffuse = GsColor::darkgreen;
-	t.setrans(0.5f, -1.0f, 0.0f);
-
-	SnGroup* _rightleg = new SnGroup;
-	_rightleg->add(rightleg);
-	right_leg->child(_rightleg);
-	_hhips->add(right_leg);
-	right_leg->initial_mat(t);
-
-	//left hand
-	SnPrimitive* lefthand= new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.2f, 1.2f);
-	lefthand->prim().material.diffuse = GsColor::magenta;
-	t.setrans(-1.0f, 0.0f, 0.0f);
-
-	SnGroup* _lefthand = new SnGroup;
-	_lefthand ->separator(true);
-	_lefthand->add(lefthand);
-	left_hand->child(_lefthand);
-	_hchest->add(left_hand);
-	left_hand->initial_mat(t);
-	//rootg()->add(left_hand);
-
-	//right hand
-	SnPrimitive* righthand = new SnPrimitive(GsPrimitive::Capsule, 0.2f, 0.2f, 1.2f);
-	righthand->prim().material.diffuse = GsColor::magenta;
-	t.setrans(1.0f, 0.0f, 0.0f);
-
-	SnGroup* _righthand = new SnGroup;
-	_righthand->separator(true);
-	_righthand->add(righthand);
-	right_hand->child(_righthand);
-	_hchest->add(right_hand);
-	right_hand->initial_mat(t);
-	//rootg()->add(right_hand);
-
-
 	//floor
 	p = new SnPrimitive(GsPrimitive::Box, 66.0f, 0.01f, 66.0f);
 	p->prim().material.diffuse = GsColor::darkgray;
@@ -539,6 +471,7 @@ void MyViewer::buildfirstrow(){
 	backrwheel1_1->child(backrwheelgroup1_1);
 	bottomsng1_1->add(backrwheel1_1);
 	backrwheel1_1->initial_mat(transm);
+
 
 	//second car 
 	//top part of car
@@ -1309,100 +1242,296 @@ void MyViewer::firstperson() {
 		} while (time < 3.0f);
 	}
 }
-	
+void MyViewer::move2() {
+	SnTransform* t = torso->get<SnTransform>(0);
+	SnTransform* t1 = torso->get<SnTransform>(1);
+	SnTransform* t2 = torso->get<SnTransform>(2);
+	SnTransform* t3 = torso->get<SnTransform>(3);
+	SnTransform* t4 = torso->get<SnTransform>(4);
+	SnTransform* t5 = torso->get<SnTransform>(5);
+	SnTransform* t6 = torso->get<SnTransform>(6);
+
+	GsMat m = t->get();
+	GsMat m1 = t1->get();
+	GsMat m2 = t2->get();
+	GsMat m3 = t3->get();
+	GsMat m4 = t4->get();
+	GsMat m5 = t5->get();
+	GsMat m6 = t6->get();
+
+	if (front == true || back == true) {
+		m.e34 = finc;
+		t->set(m);
+		m1.e34 = finc;
+		t1->set(m1);
+		m2.e34 = finc;
+		t2->set(m2);
+		m3.e34 = finc;
+		t3->set(m3);
+		m4.e34 = finc;
+		t4->set(m4);
+		m5.e34 = finc;
+		t5->set(m5);
+		m6.e34 = finc;
+		t6->set(m6);
+		render();
+		if (step == true) {
+			for (int i = 0; i < 4; i++) {
+				leftL = true;
+				run_animation(1);
+				rightL = true;
+				run_animation(-1);
+			}
+			step = false;
+		}
+		else {
+			for (int i = 0; i < 4; i++) {
+				leftL = true;
+				run_animation(-1);
+				rightL = true;
+				run_animation(1);
+			}
+			step = true;
+		}
+		if (front == true)
+			front = false;
+		else
+			back = false;
+	}
+	else if (left == true || right == true) {
+		m.e14 = sinc;
+		t->set(m);
+		m1.e14 = sinc;
+		t1->set(m1);
+		m2.e14 = sinc;
+		t2->set(m2);
+		m3.e14 = sinc - .5f;
+		t3->set(m3);
+		m4.e14 = sinc + .5f;
+		t4->set(m4);
+		m5.e14 = sinc - 1;
+		t5->set(m5);
+		m6.e14 = sinc + 1;
+		t6->set(m6);
+		render();
+		if (step == true) {
+			for (int i = 0; i < 3; i++) {
+				leftL = true; rightL = true;
+				run_animation(-1);
+			}
+			step = false;
+		}
+		else {
+			for (int i = 0; i < 3; i++) {
+				leftL = true;  rightL = true;
+				run_animation(1);
+			}
+			step = true;
+		}
+		if (left == true)
+			left = false;
+		else
+			right = false;
+	}
+
+}
+void MyViewer::move(SnGroup* limb, SnTransform* t, GsMat m, float n) {
+
+	GsMat f;
+	GsMat tr;
+	GsMat rotate;
+	GsMat origin;
+
+	float theta = n * float(GS_2PI / 90);
+
+	float e14 = m.e14;
+	float e24 = m.e24;
+	float e34 = m.e34;
+	tr.translation(0, 0.5f, 0);
+	e14 = -1 * e14;
+	e24 = -1 * e24;
+	e34 = -1 * e34;
+
+	origin.translation(0, -0.5f, 0);
+	//if (leftA == true || rightA == true) {
+	if (side == true)
+		rotate.rotz(theta);
+	else
+		rotate.rotx(theta);
+
+	f = m * tr * rotate * origin;
+
+	t->set(f);
+}
+void MyViewer::run_animation(float n)
+{
+	if (_animating) return; // avoid recursive calls
+	_animating = true;
+
+	if (leftL == true && rightL == true) {
+		side = true;
+		SnGroup* leftLeg = rootg()->get<SnGroup>(3);
+		SnTransform* lLeg = leftLeg->get<SnTransform>(0);
+		GsMat m = lLeg->get();
+		move(leftLeg, lLeg, m, n);
+		leftL = false;
+
+		SnGroup* rightLeg = rootg()->get<SnGroup>(4);
+		SnTransform* rLeg = rightLeg->get<SnTransform>(0);
+		m = rLeg->get();
+		move(rightLeg, rLeg, m, -n);
+		rightL = false;
+		side = false;
+	}
+	if (leftL == true) {
+		SnGroup* leftLeg = rootg()->get<SnGroup>(3);
+		SnTransform* lLeg = leftLeg->get<SnTransform>(0);
+		GsMat m = lLeg->get();
+		move(leftLeg, lLeg, m, n);
+		leftL = false;
+	}
+	else if (rightL == true) {
+		SnGroup* rightLeg = rootg()->get<SnGroup>(4);
+		SnTransform* rLeg = rightLeg->get<SnTransform>(0);
+		GsMat m = rLeg->get();
+		move(rightLeg, rLeg, m, n);
+		rightL = false;
+	}
+	else if (leftA == true) {
+		SnGroup* leftArm = rootg()->get<SnGroup>(5);
+		SnTransform* lArm = leftArm->get<SnTransform>(0);
+		GsMat m = lArm->get();
+		move(leftArm, lArm, m, n);
+		leftA = false;
+	}
+	else if (rightA == true) {
+		SnGroup* rightArm = rootg()->get<SnGroup>(6);
+		SnTransform* rArm = rightArm->get<SnTransform>(0);
+		GsMat m = rArm->get();
+		move(rightArm, rArm, m, n);
+		rightA = false;
+	}
+	render();
+	//ws_check();
+	_animating = false;
+}
+
 
 int MyViewer::handle_keyboard(const GsEvent& e) {
 	int ret = WsViewer::handle_keyboard(e); // 1st let system check events
 	if (ret) return ret;
 
 	switch (e.key)
-	{
-	case GsEvent::KeyEsc: gs_exit(); return 1;
-	case 'n': { bool b = !_nbut->value(); _nbut->value(b); show_normals(b); return 1; }
+	{	case GsEvent::KeyEsc: gs_exit(); 
+	return 1;
+	//case 'n': { bool b = !_nbut->value(); _nbut->value(b); show_normals(b); return 1; }
 			//default: gsout << "Key pressed: " << e.key << gsnl;
-//first person 
-	case 'w': {
-		camera().eye.y -= 0.9f;
-		render();
-		ws_check();
-		return 1;
+ 
+	case 'q': leftL = true; run_animation(-1); break;
+	case 'a': leftL = true; run_animation(1); break;
+	case 'w': rightL = true; run_animation(-1); break;
+	case 's': rightL = true; run_animation(1); break;
+	case 'e': leftA = true; run_animation(-1); break;
+	case 'd': leftA = true; run_animation(1); break;
+	case 'r': rightA = true; run_animation(-1); break;
+	case 'f': rightA = true; run_animation(1); break;
+	case 't': leftL = true; rightL = true; run_animation(-1); break;
+	case 'g': leftL = true; rightL = true; run_animation(1); break;
+	case 65361: sinc -= 0.1f; left = true; move2(); break;
+	case 65362: finc += 0.1f; front = true; move2(); break;
+	case 65364: finc -= 0.1f; back = true; move2(); break;
+	case 65363: sinc += 0.1f; right = true; move2(); break;
 
-	}
-	case 's': {
+		//first person
+		//add later
+		//case 'w': {
+		//	camera().eye.y -= 0.9f;
+		//	render();
+		//	ws_check();
+		//	return 1;
 
-	}
-	case 'a': {
+		//}
+		//case 's': {
 
-	}
-	case 'd': {
+		//}
+		//case 'a': {
 
-	}
-			//global movement
-			//left arrow
-	case 65361: {
-		persontranslation = h_head->mat();//mat is manipulator matrix
-		xposition = 0.2f;
-		persontranslation.e14 -= xposition;
-		h_head->initial_mat(persontranslation);
-		render();
-		return 1;
+		//}
+		//case 'd': {
 
-	}
-			  //right arrow
-	case 65363: {
-		persontranslation = h_head->mat();
-		xposition = 0.2f;
-		persontranslation.e14 += xposition;
-		h_head->initial_mat(persontranslation);
-		render();
-		return 1;
-	}
-			  //foward
-	case 65362: {
-		persontranslation = h_head->mat();
-		yposition = 0.35f;
-		persontranslation.e34 -= yposition;
-		h_head->initial_mat(persontranslation);
-		GsVec test;
-		GsVec test2;
-		GsBox humanBox = h_head->box();
-		float e14 = persontranslation.e14;
-		float e24 = persontranslation.e24;
-		float e34 = persontranslation.e34;
-		GsBox b13 = top1_3->box();
-		GsPnt A = GsPnt(e14, e24, e34);
-		if (b13.contains(A))
-			gsout << "touched bitch" << gsnl;
-		gsout << A << gsnl;
-	/*	test = b13.size();
-		gsout << test << gsnl;
+		//}
+		//		//global movement
+		//		//left arrow
+		//case 65361: {
+		//	persontranslation = h_head->mat();//mat is manipulator matrix
+		//	xposition = 0.2f;
+		//	persontranslation.e14 -= xposition;
+		//	h_head->initial_mat(persontranslation);
+		//	render();
+		//	return 1;
 
-		test2 = humanBox.size();
-		gsout << test2 << gsnl;
-	if (humanBox.intersects(b13))
-			gsout << "touched bitch!" << gsnl;*/
-		render();
-		return 1;
-	}
-			  //back
-	case 65364: {
-		persontranslation = h_head->mat();
-		yposition = 0.35f;
-		persontranslation.e34 += yposition;
-		h_head->initial_mat(persontranslation);
-		render();
-		return 1;
-	}
+		//}
+				  //right arrow
+				  //add later
+		/*case 65363: {
+			persontranslation = h_head->mat();
+			xposition = 0.2f;
+			persontranslation.e14 += xposition;
+			h_head->initial_mat(persontranslation);
+			render();
+			return 1;
+		}
+				  //foward
+		case 65362: {
+			persontranslation = h_head->mat();
+			yposition = 0.35f;
+			persontranslation.e34 -= yposition;
+			h_head->initial_mat(persontranslation);
+			GsVec test;
+			GsVec test2;
+			GsBox humanBox = h_head->box();
+			float e14 = persontranslation.e14;
+			float e24 = persontranslation.e24;
+			float e34 = persontranslation.e34;
+			GsBox b13 = top1_3->box();
+			GsPnt A = GsPnt(e14, e24, e34);
+			if (b13.contains(A))
+				gsout << "touched bitch" << gsnl;
+			gsout << A << gsnl;
 
-	}
-	return 0;
+
+			/*	test = b13.size();
+			gsout << test << gsnl;
+
+			test2 = humanBox.size();
+			gsout << test2 << gsnl;
+		if (humanBox.intersects(b13))
+				gsout << "touched bitch!" << gsnl;*/
+				//render();
+				//return 1; }
+	
+	//back
+//add later
+//case 65364: {
+//	persontranslation = h_head->mat();
+//	yposition = 0.35f;
+//	persontranslation.e34 += yposition;
+//	h_head->initial_mat(persontranslation);
+//	render();
+//	return 1;
+//}
+
 }
+	return 0;
+	}
 
-			//default: gsout << "Key pressed: " << e.key << gsnl;
 
-			int MyViewer::uievent(int e)
+
+//default: gsout << "Key pressed: " << e.key << gsnl;
+
+int MyViewer::uievent(int e)
 			{
-				switch (e)
+		switch (e)
 				{
 				case EvNormals: show_normals(_nbut->value()); return 1;
 				case EvAnimate: animatecars(); return 1;
