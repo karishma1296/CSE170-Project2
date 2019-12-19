@@ -16,8 +16,8 @@ GsModel* mymodel = new GsModel;
 bool leftL = false; bool rightL = false; bool leftA = false; bool rightA = false;
 bool front = false; bool back = false; bool left = false; bool right = false;
 bool step = true; bool side = false; bool mode = false;
-float finc = 0.0f;
-float sinc = 0.0f;
+float finc = 65.0f;
+float sinc = 65.0f;
 
 
 /////////////*CAR MANIPS*///////////////////
@@ -196,33 +196,33 @@ void MyViewer::build_scene ()
 	// alien body construction
 	p = new SnPrimitive(GsPrimitive::Ellipsoid, 2.0, 0.5);
 	p->prim().material.diffuse = GsColor::darkgreen;
-	add_model(p, GsVec(0, 3, 0));
+	add_model(p, GsVec(0, 3, 65));
 
 	p = new SnPrimitive(GsPrimitive::Cylinder, 0.25, 0.25, 0.5);
 	p->prim().material.diffuse = GsColor::blue;
-	add_model(p, GsVec(0, 4, 0));
+	add_model(p, GsVec(0, 5, 65));
 
 	p = new SnPrimitive(GsPrimitive::Sphere, 1);
 	p->prim().material.diffuse = GsColor::darkgreen;
-	add_model(p, GsVec(0, 5.5f, 0));
+	add_model(p, GsVec(0, 6, 65));
 
 	//legs
 	p = new SnPrimitive(GsPrimitive::Capsule, .25, .25, 1);
 	p->prim().material.diffuse = GsColor::blue;
-	add_model(p, GsVec(-0.5f, 1.0f, 0));
+	add_model(p, GsVec(-0.5f, 1.0f, 65));
 
 	p = new SnPrimitive(GsPrimitive::Capsule, .25, .25, 1);
 	p->prim().material.diffuse = GsColor::blue;
-	add_model(p, GsVec(0.5f, 1.0f, 0));
+	add_model(p, GsVec(0.5f, 1.0f, 65));
 
 	//arms
 	p = new SnPrimitive(GsPrimitive::Capsule, .25, .25, 1);
 	p->prim().material.diffuse = GsColor::blue;
-	add_model(p, GsVec(-1, 3.0f, 0));
+	add_model(p, GsVec(-1, 3.0f, 65));
 
 	p = new SnPrimitive(GsPrimitive::Capsule, .25, .25, 1);
 	p->prim().material.diffuse = GsColor::blue;
-	add_model(p, GsVec(1, 3.0f, 0));
+	add_model(p, GsVec(1, 3.0f, 65));
 	
 	//floor
 	p = new SnPrimitive(GsPrimitive::Box, 66.0f, 0.01f, 66.0f);
@@ -1144,6 +1144,9 @@ void MyViewer::buildenv() {
 	add_model(p, GsVec(0.0f, 0.0f, -65.0f));
 }
 
+bool contains(GsPnt A, GsPnt B) {
+	return A.x >= B.x - 6 && A.x <= B.x + 6 && A.y >= B.y - 4.45f && A.y <= B.y + 4.45f && A.z >= B.z - 4.5f && A.z <= B.z + 4.5f;
+}
 
 void MyViewer::animatecars() {
 	if (_animating) return; // avoid recursive calls
@@ -1160,6 +1163,9 @@ void MyViewer::animatecars() {
 	GsMat m9 = top5_2->mat();
 	GsMat m10 = top6_1->mat();
 
+	SnTransform* person = torso->get<SnTransform>(0);
+	GsMat body = person->get();
+
 	double frdt = 1.0 / 30.0; // delta time to reach given number of frames per second
 	double v = 4; // target velocity is 1 unit per second
 	double t = 0, lt = 0, t0 = gs_time();
@@ -1167,6 +1173,10 @@ void MyViewer::animatecars() {
 	{
 		while (t - lt < frdt) { ws_check(); t = gs_time() - t0; } // wait until it is time for next frame
 		lt = t;		//makes speed constant
+
+		SnTransform* person = torso->get<SnTransform>(0);
+		GsMat body = person->get();
+
 		double yinc = 1.3;
 
 		if (m.e14 > 70.0f) m.e14 = -70.0f;
@@ -1211,6 +1221,92 @@ void MyViewer::animatecars() {
 		m10.e14 += (float)yinc3;
 		top6_1->initial_mat(m10);
 
+		float e14 = body.e14;
+		float e24 = body.e24;
+		float e34 = body.e34;
+
+		float c14 = m.e14;
+		float c24 = m.e24;
+		float c34 = m.e34;
+
+		GsPnt A = GsPnt(e14, e24, e34);
+		GsPnt B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m2.e14;
+		c24 = m2.e24;
+		c34 = m2.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m3.e14;
+		c24 = m3.e24;
+		c34 = m3.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m4.e14;
+		c24 = m4.e24;
+		c34 = m4.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m5.e14;
+		c24 = m5.e24;
+		c34 = m5.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m6.e14;
+		c24 = m6.e24;
+		c34 = m6.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m7.e14;
+		c24 = m7.e24;
+		c34 = m7.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m8.e14;
+		c24 = m8.e24;
+		c34 = m8.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m9.e14;
+		c24 = m9.e24;
+		c34 = m9.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+		c14 = m10.e14;
+		c24 = m10.e24;
+		c34 = m10.e34;
+
+		B = GsPnt(c14, c24, c34);
+		if (contains(A, B))
+			gsout << "Doh!" << gsnl;
+
+
 		render(); // notify it needs redraw
 		ws_check(); // redraw now
 	} while (m.e24 > 0);
@@ -1242,6 +1338,8 @@ void MyViewer::firstperson() {
 		} while (time < 3.0f);
 	}
 }
+
+
 void MyViewer::move2() {
 	SnTransform* t = torso->get<SnTransform>(0);
 	SnTransform* t1 = torso->get<SnTransform>(1);
@@ -1437,10 +1535,10 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 	case 'f': rightA = true; run_animation(1); break;
 	case 't': leftL = true; rightL = true; run_animation(-1); break;
 	case 'g': leftL = true; rightL = true; run_animation(1); break;
-	case 65361: sinc -= 0.1f; left = true; move2(); break;
-	case 65362: finc += 0.1f; front = true; move2(); break;
-	case 65364: finc -= 0.1f; back = true; move2(); break;
-	case 65363: sinc += 0.1f; right = true; move2(); break;
+	case 65361: sinc -= 0.35f; left = true; move2(); break;
+	case 65362: finc -= 0.35f; front = true; move2(); break;
+	case 65364: finc += 0.35f; back = true; move2(); break;
+	case 65363: sinc += 0.35f; right = true; move2(); break;
 
 		//first person
 		//add later
