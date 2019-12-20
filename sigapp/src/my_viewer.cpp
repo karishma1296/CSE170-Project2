@@ -7,9 +7,12 @@
 # include <sig/sn_manipulator.h>
 #include <cmath>
 
+
 # include <sigogl/ws_run.h>
 
 SnGroup* torso = new SnGroup;
+int winCount = 0;
+int boost = 0;
 int count = 0;
 int control = 1;
 GsModel* mymodel = new GsModel;
@@ -17,7 +20,9 @@ bool leftL = false; bool rightL = false; bool leftA = false; bool rightA = false
 bool front = false; bool back = false; bool left = false; bool right = false;
 bool step = true; bool side = false; bool mode = false;
 float finc = 65.0f;
-float sinc = 65.0f;
+float sinc = 0.0f;
+float speed = .45f;
+double yinc = .7; double yinc2 = .9; double yinc3 = 3.0; double yinc4 = 3.3; double yinc5 = 5.0;
 
 
 /////////////*CAR MANIPS*///////////////////
@@ -255,7 +260,6 @@ void MyViewer::build_scene ()
 	buildfifthrow();
 	buildsixthrow();
 	buildenv();
-	
 }
 void MyViewer::show_normals(bool view)
 {
@@ -410,7 +414,7 @@ void MyViewer::buildfirstrow(){
 	g.fn = torus.F.size();
 	g.dmap = new GsModel::Texture;
 
-	//g.dmap->fname.set("grass_texture.jpg");
+	g.dmap->fname.set("../space.jpg");
 	torus.M.push().init();					//M - list of materials 
 	torus.M.top() = GsMaterial::DefaultSpecular;
 	int nv = torus.V.size();				// V - list of vertex coordinates 
@@ -435,7 +439,7 @@ void MyViewer::buildfirstrow(){
 			l += 6;
 		}
 	}
-	torus.textured = false;
+	torus.textured = true;
 	torus.set_mode(GsModel::Smooth, GsModel::PerGroupMtl);
 
 	//front wheels
@@ -1142,11 +1146,26 @@ void MyViewer::buildenv() {
 	p->prim().material.diffuse = GsColor::white;
 	add_model(p, GsVec(0.0f, 0.0f, 65.0f));
 	add_model(p, GsVec(0.0f, 0.0f, -65.0f));
+
+	p = new SnPrimitive(GsPrimitive::Box, 66.0f, 30.0f, 0.1f);
+	p->prim().material.diffuse = GsColor::lightblue;
+	add_model(p, GsVec(0.0f, 30.0f, -65.0f));
+
+	p = new SnPrimitive(GsPrimitive::Box, 0.1f, 30.0f, 66.0f);
+	p->prim().material.diffuse = GsColor::lightblue;
+	add_model(p, GsVec(65.0f,30.0f, 0.0f));
+
+	p = new SnPrimitive(GsPrimitive::Box, 0.1f, 30.0f, 66.0f);
+	p->prim().material.diffuse = GsColor::lightblue;
+	add_model(p, GsVec(-65.0f, 30.0f, 0.0f));
+
+
+
 }
 
 void reset() {
 	finc = 65.0f;
-	sinc = 65.0f;
+	sinc = 0.0f;
 	SnTransform* t = torso->get<SnTransform>(0);
 	SnTransform* t1 = torso->get<SnTransform>(1);
 	SnTransform* t2 = torso->get<SnTransform>(2);
@@ -1188,6 +1207,10 @@ void MyViewer::animatecars() {
 	if (_animating) return; // avoid recursive calls
 	_animating = true;
 
+	camera().eye.y = 120.0f;
+	camera().eye.z = 100.0f;
+
+
 	GsMat m = top1_1->mat();
 	GsMat m2 = top1_2->mat();
 	GsMat m3 = top1_3->mat();
@@ -1213,7 +1236,7 @@ void MyViewer::animatecars() {
 		SnTransform* person = torso->get<SnTransform>(0);
 		GsMat body = person->get();
 
-		double yinc = 0.7;
+		//yinc = 0.7;
 
 		if (m.e14 > 70.0f) m.e14 = -70.0f;
 		if (m2.e14 > 70.0f) m2.e14 = -70.0f;
@@ -1226,7 +1249,7 @@ void MyViewer::animatecars() {
 		top1_3->initial_mat(m3);
 
 		//second row
-		double yinc2 = 0.9;
+		//yinc2 = 0.9;
 
 		if (m4.e14 < -70.0f) m4.e14 = 70.0f;
 		if (m5.e14 < -70.0f) m5.e14 = 70.0f;
@@ -1235,12 +1258,12 @@ void MyViewer::animatecars() {
 		top2_1->initial_mat(m4);
 		top2_2->initial_mat(m5);
 
-		double yinc3 = 3.0;
+		//yinc3 = 3.0;
 		if (m6.e14 < -70.0f) m6.e14 = 70.0f;
 		m6.e14 -= (float)yinc3;
 		top3_1->initial_mat(m6);
 
-		double yinc4 = 3.3;
+		//yinc4 = 3.3;
 		if (m7.e14 > 70.0f) m7.e14 = -70.0f;
 		m7.e14 += (float)yinc4;
 		top4_1->initial_mat(m7);
@@ -1252,7 +1275,7 @@ void MyViewer::animatecars() {
 		top5_1->initial_mat(m8);
 		top5_2->initial_mat(m9);
 
-		double yinc5 = 5.0;
+		//yinc5 = 5.0;
 		if (m10.e14 > 70.0f) m10.e14 = -70.0f;
 		m10.e14 += (float)yinc3;
 		top6_1->initial_mat(m10);
@@ -1342,6 +1365,22 @@ void MyViewer::animatecars() {
 		if (contains(A, B))
 			reset();
 
+		if (body.e34 <= -65) { //you made it to the other side!!
+			reset();
+			winCount++;
+			yinc += .5;
+			yinc2 += .5;
+			yinc3 += .5;
+			yinc4 += .5;
+			yinc5 += .5;
+			if (winCount == 1)
+				message().set("1/3");
+			if (winCount == 2)
+				message().set("2/3");
+			if(winCount == 3)
+				message().set("youve won!!");
+		}
+
 
 		render(); // notify it needs redraw
 		ws_check(); // redraw now
@@ -1352,26 +1391,12 @@ void MyViewer::animatecars() {
 void MyViewer::firstperson() {
 
 	if (on) {
-		double lt = 0.0;
-		double time = 0.0;
-		double t0 = gs_time();
-		do {
-				
-			lt = gs_time() - t0;
-			camera().eye.y = 15.0f;
+		camera().eye.y = 14.0f;
+		camera().eye.z = 81.0f;
+		//camera().center.x = 10.0f;
 
-			camera().eye.z = 83.0f;
-
-			//look in general distance but look away
-			//camera().center.x = 2.0f;
-
-			//tilt head left
-			//camera().up.x += 0.01f;
-
-			render();
-			ws_check();
-			message().setf("local time =%f", lt);
-		} while (time < 3.0f);
+		render();
+		ws_check();
 	}
 }
 
@@ -1571,11 +1596,78 @@ int MyViewer::handle_keyboard(const GsEvent& e) {
 	case 'f': rightA = true; run_animation(1); break;
 	case 't': leftL = true; rightL = true; run_animation(-1); break;
 	case 'g': leftL = true; rightL = true; run_animation(1); break;
-	case 65361: sinc -= 0.45f; left = true; move2(); break;
-	case 65362: finc -= 0.45f; front = true; move2(); break;
-	case 65364: finc += 0.45f; back = true; move2(); break;
-	case 65363: sinc += 0.45f; right = true; move2(); break;
 
+	case 'z': {
+		camera().eye.z -= 0.3f;
+		render();
+		ws_check();
+		return 0;
+	}
+	case 'x': {
+		camera().eye.z += 0.3f;
+		render();
+		ws_check();
+		return 0;
+	}
+	case 'c': {
+		camera().center.x += 0.3f;
+		render();
+		ws_check();
+		return 0;
+	}
+	case 'v': {
+		camera().center.x -= 0.3f;
+		render();
+		ws_check();
+		return 0;
+	}
+
+	case 65361: 
+		if (boost != 0) {
+			boost--;
+			if (boost == 0)
+				speed = .45f;
+		}
+		sinc -= speed; 
+		left = true; 
+		move2(); 
+		break;
+	case 65362: 
+		if (boost != 0) {
+			boost--;
+			if (boost == 0)
+				speed = .45f;
+		}
+		finc -= speed; 
+		front = true; 
+		move2(); 
+		break;
+	case 65364:
+		if (boost != 0) {
+			boost--;
+			if (boost == 0)
+				speed = .45f;
+		}
+		finc += speed;
+		back = true; 
+		move2(); 
+		break;
+	case 65363: 
+		if (boost != 0) {
+			boost--;
+			if (boost == 0)
+				speed = .45f;
+		}
+		sinc += speed; 
+		right = true; 
+		move2();
+		break;
+	case ' ': {
+		if (boost == 0) {
+		boost = 10;
+		speed = 1.3f;
+	}
+	}
 		//first person
 		//add later
 		//case 'w': {
